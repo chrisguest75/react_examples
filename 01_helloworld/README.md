@@ -2,8 +2,8 @@
 Demonstrate the most basic `react` app
 
 NOTES: 
-* use `className` instead of `class` for css
-* Uses JSX 
+* Uses JSX instead of JS
+* Uses `className` instead of `class` for css
 
 ## Creation
 
@@ -16,3 +16,9 @@ cd 01_helloworld
 npm start
 ```
 
+Adding icons
+```sh
+npm install react-icons --save             
+```
+# Resources
+https://react-icons.github.io/react-icons/
