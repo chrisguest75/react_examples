@@ -2,6 +2,11 @@
 
 Walkthrough the react `tictactoe` tutorial.  
 
+* props
+* function component.
+* immutability
+* chrome extension
+
 ## Creation
 
 ```sh
@@ -16,3 +21,4 @@ npm start
 ## Resources
 
 * Tutorial: Intro to React [here](https://reactjs.org/tutorial/tutorial.html)
+https://reactjs.org/docs/optimizing-performance.html#examples
