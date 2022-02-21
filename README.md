@@ -16,6 +16,15 @@ code --install-extension skyran.js-jsx-snippets
 open https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en
 ```
 
+## Troubleshooting
+
+If the `create-react-app` is failing you might need to clear the cache.  
+
+```sh
+npx clear-npx-cache
+nvm install --lts
+```
+
 ## 00 - Simple CDN based react
 
 Demonstrate how to use CDN based React.  
@@ -36,9 +45,3 @@ Walkthrough the react `tictactoe` tutorial.
 * Followed linkedin learning [here](https://raybo.org/slides_reactinterface/#/)
 * Slides [here](https://raybo.org/slides_reactinterface/notes/slides/01_01/index.html)
 * Repo [here](https://github.com/LinkedInLearning/react-interface-2880067)
-
-
-
-
-
-
