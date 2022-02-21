@@ -1,7 +1,9 @@
 # README
+
 Demonstrate the most basic `react` app
 
-NOTES: 
+NOTES:
+
 * Uses JSX instead of JS - Uses babel to transpile
 * Uses `className` instead of `class` for css
 * Babel is being used. https://babeljs.io/docs/en/
@@ -17,8 +19,11 @@ npm start
 ```
 
 Adding icons
+
 ```sh
 npm install react-icons --save             
 ```
-# Resources
+
+## Resources
+
 https://react-icons.github.io/react-icons/
