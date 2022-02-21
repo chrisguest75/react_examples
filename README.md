@@ -26,6 +26,11 @@ Demonstrate how to use CDN based React.
 Demonstrate the most basic `react` app  
 [README.md](./01_helloworld/README.md)  
 
+## 04 - TicTacToe
+
+Walkthrough the react `tictactoe` tutorial.  
+[README.md](./04_tictactoe/README.md)  
+
 ## Resources
 
 * Followed linkedin learning [here](https://raybo.org/slides_reactinterface/#/)
