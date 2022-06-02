@@ -4,9 +4,9 @@ Demonstrate working through the NextJS tutorial.
 
 ℹ️ NOTE: This was created on iPad using codespaces.   
 
-
-❌ I'm here https://nextjs.org/learn/foundations/from-react-to-nextjs/getting-started-with-nextjs
-
+TODO:
+* ❌ I'm here https://nextjs.org/learn/foundations/from-react-to-nextjs/getting-started-with-nextjs
+* devcontainers... 
 
 ## Page
 
