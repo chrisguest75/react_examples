@@ -6,9 +6,39 @@
     <!-- Babel Script -->
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script type="text/jsx">
-      const app = document.getElementById('app');
-      ReactDOM.render(<h1>Develop. Preview. Ship. 🚀</h1>, app);
-    </script>
-  </body>
+
+      const app = document.getElementById("app")
+    
+      function createTitle(title) {
+        if (title) {
+          return title;
+        } else {
+          return 'Default title';
+        }
+      }
+      
+      function Header({ title }) {
+        return <h1>{createTitle(title)}</h1>;
+      }
+            
+      function HomePage() {
+        const names = ['Ada Lovelace', 'Grace Hopper', 'Margaret Hamilton'];
+      
+        return (
+          <div>
+            <Header title="Develop. Preview. Ship. 🚀" />
+            <ul>
+              {names.map((name) => (
+                <li key={name}>{name}</li>
+              ))}
+            </ul>
+          </div>
+        );
+      }
+
+      ReactDOM.render(<HomePage />, app);
+ 
+    </script>  </body>
 </html>
+
 

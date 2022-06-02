@@ -9,8 +9,14 @@ Demonstrate working through the NextJS tutorial.
 * Install the liveserver extension.  
 * Babel is what converts jsx to code performing dom manipulation.  
 
+* The same way, you can pass pieces of information as properties to React components. These are called props.
+
+
 ## 👀 Resources
 
 * https://nextjs.org/learn/foundations/from-javascript-to-react/getting-started-with-react
 
 https://beta.reactjs.org/learn/preserving-and-resetting-state#the-ui-tree
+
+https://beta.reactjs.org/apis/render
+
