@@ -20,3 +20,11 @@ https://beta.reactjs.org/learn/preserving-and-resetting-state#the-ui-tree
 
 https://beta.reactjs.org/apis/render
 
+https://beta.reactjs.org/learn/managing-state
+
+https://beta.reactjs.org/apis
+
+https://beta.reactjs.org/learn/referencing-values-with-refs
+
+
+
