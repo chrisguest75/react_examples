@@ -4,12 +4,22 @@ Demonstrate working through the NextJS tutorial.
 
 ℹ️ NOTE: This was created on iPad using codespaces.   
 
+
+❌ I'm here https://nextjs.org/learn/foundations/from-react-to-nextjs/getting-started-with-nextjs
+
+
 ## Page
 
 * Install the liveserver extension.  
 * Babel is what converts jsx to code performing dom manipulation.  
 
 * The same way, you can pass pieces of information as properties to React components. These are called props.
+
+chrome://chrome-urls/
+
+
+
+
 
 
 ## 👀 Resources
