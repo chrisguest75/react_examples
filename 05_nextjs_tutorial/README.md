@@ -11,13 +11,21 @@ TODO:
 ## Page
 
 * Install the liveserver extension.  
-* Babel is what converts jsx to code performing dom manipulation.  
 
+
+
+Notes:
+
+* Babel is what converts jsx to code performing dom manipulation.  
 * The same way, you can pass pieces of information as properties to React components. These are called props.
 
 chrome://chrome-urls/
 
 
+```sh
+npm install
+npm run dev
+```
 
 
 
