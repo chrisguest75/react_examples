@@ -35,6 +35,16 @@ Demonstrate how to use CDN based React.
 Demonstrate the most basic `react` app  
 [README.md](./01_helloworld/README.md)  
 
+## 02 - Typescript
+
+Demonstrate the most basic `react` typescript app  
+[README.md](./02_typescript/README.md)  
+
+## 03 - Simple
+
+Demonstrate another simple example from `freecodecamp`.  
+[README.md](./03_simple/README.md)  
+
 ## 04 - TicTacToe
 
 Walkthrough the react `tictactoe` tutorial.  

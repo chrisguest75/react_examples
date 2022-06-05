@@ -1,6 +1,6 @@
 # README
 
-Demonstrate the most basic `react` typescript app
+Demonstrate the most basic `react` typescript app  
 
 NOTES:
 
