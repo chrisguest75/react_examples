@@ -5,7 +5,7 @@ import './styles.css'
 
 ReactDOM.render(
   <React.StrictMode>
-    <GameComponent />
+    <GameComponent title={"Connect4"} />
   </React.StrictMode>,
   document.getElementById('root')
 );

@@ -1,56 +1,71 @@
 import React from 'react';
 import BoardComponent from './BoardComponent';
-//import { Board } from './Board'
-//import { Player, RedPlayer, YellowPlayer} from './Player'
+import { Board } from './Board'
+import { Player, RedPlayer, YellowPlayer} from './Player'
 
-function Header() {
-  return (
-    <header className="header">
-      <h1>Connect4</h1>
-    </header>
-  )
+interface IGameProps {
+  title: string
 }
 
-function Content() {
-  return (
-    <div className="game">
-      <BoardComponent /> 
-    </div>
-  )    
+interface IGameState {
+  width: number,
+  height: number,
+  board : Board,
+  players: [Player, Player],
+  turn: number
 }
-
-function Footer() {
-  return (
-      <footer className="footer">
-          <small>© 2022 Chris Guest</small>
-      </footer>
-  )   
-}
-
-class GameComponent extends React.Component {
+class GameComponent extends React.Component<IGameProps, IGameState> {
   width = 7
   height = 6
 
-  // TODO: type of props
-  constructor(props: any ) {
+  constructor(props: IGameProps) {
     super(props);
+    let board = new Board(this.width, this.height)
+    board.reset([
+      [0,0,0,0,0,0,0],
+      [0,0,0,0,0,0,0],
+      [0,1,0,0,0,0,0],
+      [0,1,0,0,0,0,0],
+      [0,1,0,0,0,0,0],
+      [0,1,2,2,2,0,0],
+    ])
     this.state = {
       width: this.width,
       height: this.height,
-      grid: Array(this.width*this.height).fill(null),
 
-      //board : new Board(this.width, this.height),
-      //players : [Player, Player] = [new RedPlayer(), new YellowPlayer()]
-
+      board : board,
+      players : [new RedPlayer(), new YellowPlayer()],
+      turn: 0,
     };
   }
 
+/*  Header() {
+    return (
+      <header className="header">
+        <h1>Connect4</h1>
+      </header>
+    )
+  }
+  */
+  /*Content() {
+    return (
+    )    
+  }*/
+  /*
+  Footer() {
+    return (
+        <footer className="footer">
+            <small>© 2022 Chris Guest</small>
+        </footer>
+    )   
+  }
+  */
   render() {
     return (
       <div>
-        <Header />
-        <Content />
-        <Footer />
+        <div className="game">
+          <BoardComponent board={ this.state.board } /> 
+        </div>
       </div>
     );
   }
