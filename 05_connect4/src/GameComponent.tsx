@@ -12,7 +12,7 @@ interface IGameState {
   height: number,
   board : Board,
   players: [Player, Player],
-  turn: number
+  player: number
 }
 class GameComponent extends React.Component<IGameProps, IGameState> {
   width = 7
@@ -35,7 +35,7 @@ class GameComponent extends React.Component<IGameProps, IGameState> {
 
       board : board,
       players : [new RedPlayer(), new YellowPlayer()],
-      turn: 0,
+      player: 0,
     };
   }
 
@@ -64,7 +64,7 @@ class GameComponent extends React.Component<IGameProps, IGameState> {
     return (
       <div>
         <div className="game">
-          <BoardComponent board={ this.state.board } /> 
+          <BoardComponent board={ this.state.board } players={ this.state.players } player={ this.state.player } /> 
         </div>
       </div>
     );

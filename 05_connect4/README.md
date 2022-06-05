@@ -2,6 +2,10 @@
 
 Build a `connect4` game.  
 
+TODO:
+
+* The this pointer for the click handler is pointing to the cell.  
+
 ## 🏠 Build
 
 ```sh

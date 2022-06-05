@@ -1,9 +1,11 @@
 import React from 'react';
-import { Counters } from "./Board";
+import { Board, Counters } from "./Board";
 
 interface ICellProps {
-  value: number;
-  //onclick: React.MouseEvent<HTMLElement>;
+  board: Board;
+  x: number;
+  y: number;
+  handleClick: any;
 }
 
 interface ICellState {
@@ -14,8 +16,11 @@ class Cell extends React.Component<ICellProps, ICellState> {
 
   constructor(props: ICellProps) {
     super(props);
+    const x = this.props.x
+    const y = this.props.y
+    const state: Array<Array<number>> = props.board.state()
     this.state = {
-      token: this.props.value
+      token: state[y][x]
     };
   }
 
@@ -36,7 +41,7 @@ class Cell extends React.Component<ICellProps, ICellState> {
     return character
   }
 
-  onClick() {
+  /*onClick() {
     let token = this.state.token
 
     if (token == Counters.None) {
@@ -46,12 +51,18 @@ class Cell extends React.Component<ICellProps, ICellState> {
     this.setState((state) => ({
       token: token
     }));    
-  }
+
+
+    onClick={MouseEventHandler<HTMLButtonElement>(x:number, y:number) => this.props.handleClick(this.props.x, this.props.y)}
+
+
+    React.MouseEventHandler<HTMLButtonElement>
+  }*/
 
   render() {
     return (
       <div className="cell">
-        <button className="token" onClick={() => this.onClick()}>
+        <button className="token" onClick={ () => this.props.handleClick() }>
           { this.character() }
         </button>
       </div>
