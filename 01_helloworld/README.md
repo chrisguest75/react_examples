@@ -7,6 +7,29 @@ NOTES:
 * Uses JSX instead of JS - Uses babel to transpile
 * Uses `className` instead of `class` for css
 * Babel is being used. https://babeljs.io/docs/en/
+
+## 🏠 Build
+
+```sh
+# configure
+nvm use
+npm install
+```
+
+## 🧪 Test
+
+```sh
+# run tests
+npm test
+```
+
+## ⚡️ Run
+
+```sh
+# start the app
+npm start
+```
+
 ## Creation
 
 ```sh
@@ -24,6 +47,6 @@ Adding icons
 npm install react-icons --save             
 ```
 
-## Resources
+## 👀 Resources
 
-https://react-icons.github.io/react-icons/
+* react icons [here](https://react-icons.github.io/react-icons/)
