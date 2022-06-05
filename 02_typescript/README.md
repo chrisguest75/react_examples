@@ -5,13 +5,25 @@ Demonstrate the most basic `react` typescript app
 NOTES:
 
 * default is to use `yarn` instead of `npm`.  
-* can only have one parent object per component.  But you can use an invisible React.fragment  
+* can only have one parent object per component.  But you can use an invisible React.fragment
     ```text
-    <React.Fragment> or <></>
+        <React.Fragment> or <></>
     ```
 * serve -s build -l 8080
 
 npx browserslist@latest --update-db
+
+## 🏠 Serving up the build folder
+
+Once the `./build` folder is created you  
+
+```sh
+# install modules
+yarn 
+
+# start app
+yarn start
+```
 
 ## Creation
 
@@ -19,20 +31,13 @@ npx browserslist@latest --update-db
 # in repo root
 cd $(git root)
 npx create-react-app demo-app --template typescript
+
+# either move files up a directory or leave in folder.
 cd demo-app
 
-# recommendation it to remove .git yourself.  
+# recommendation is to remove .git yourself.  
 rm -rf .git
 
-cd demo-app
-yarn run start  
-```
-
-## Serving up the build folder
-
-Once the ./build folder is created you  
-
-```sh
 # install serve globally
 yarn global add serve        
 
@@ -40,4 +45,4 @@ yarn global add serve
 serve -s build -l 8080    
 ```
 
-## Resources
+## 👀 Resources
