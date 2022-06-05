@@ -1,5 +1,31 @@
 import React from 'react';
 import BoardComponent from './BoardComponent';
+//import { Board } from './Board'
+//import { Player, RedPlayer, YellowPlayer} from './Player'
+
+function Header() {
+  return (
+    <header>
+      <h1>Connect4</h1>
+    </header>
+  )
+}
+
+function Content() {
+  return (
+    <div className="game">
+      <BoardComponent /> 
+    </div>
+  )    
+}
+
+function Footer() {
+  return (
+      <footer className="footerbox">
+          <small>© 2022 Chris Guest</small>
+      </footer>
+  )   
+}
 
 class GameComponent extends React.Component {
   width = 7
@@ -12,13 +38,19 @@ class GameComponent extends React.Component {
       width: this.width,
       height: this.height,
       grid: Array(this.width*this.height).fill(null),
+
+      //board : new Board(this.width, this.height),
+      //players : [Player, Player] = [new RedPlayer(), new YellowPlayer()]
+
     };
   }
 
   render() {
     return (
-      <div className="game">
-        <BoardComponent /> 
+      <div>
+        <Header />
+        <Content />
+        <Footer />
       </div>
     );
   }

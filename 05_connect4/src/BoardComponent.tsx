@@ -10,7 +10,7 @@ class BoardComponent extends React.Component {
       let children = []
       //Inner loop to create children
       for (let j = 0; j < 7; j++) {
-        children.push(<Cell />)
+        children.push(<Cell value={ (i * j) } />)
       }
       //Create the parent and add the children
       table.push(<div className="row">{children}</div>)
