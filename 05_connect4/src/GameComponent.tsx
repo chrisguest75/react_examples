@@ -1,9 +1,9 @@
 import React from 'react';
-import Board from './Board';
+import BoardComponent from './BoardComponent';
 
-class Game extends React.Component {
+class GameComponent extends React.Component {
   width = 7
-  height = 5
+  height = 6
 
   // TODO: type of props
   constructor(props: any ) {
@@ -18,10 +18,10 @@ class Game extends React.Component {
   render() {
     return (
       <div className="game">
-        <Board /> 
+        <BoardComponent /> 
       </div>
     );
   }
 }
 
-export default Game;
+export default GameComponent;

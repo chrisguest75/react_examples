@@ -19,10 +19,10 @@
     float: left;
     font-size: 54px;
     font-weight: bold;
-    line-height: 34px;
+    line-height: 100px;
     height: 100px;
-    margin-right: -1px;
-    margin-top: -1px;
+    margin-right: 0px;
+    margin-top: 0px;
     padding: 0;
     text-align: center;
     width: 100px;

@@ -1,12 +1,12 @@
 import React from 'react';
-import Cell from './Cell';
+import Cell from './CellComponent';
 
-class Board extends React.Component {
+class BoardComponent extends React.Component {
   createBoard = () => {
     let table = []
 
     // Outer loop to create parent
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 6; i++) {
       let children = []
       //Inner loop to create children
       for (let j = 0; j < 7; j++) {
@@ -28,4 +28,4 @@ class Board extends React.Component {
   
 }
 
-export default Board;
+export default BoardComponent;
