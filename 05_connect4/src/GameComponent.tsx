@@ -5,7 +5,7 @@ import BoardComponent from './BoardComponent';
 
 function Header() {
   return (
-    <header>
+    <header className="header">
       <h1>Connect4</h1>
     </header>
   )
@@ -21,7 +21,7 @@ function Content() {
 
 function Footer() {
   return (
-      <footer className="footerbox">
+      <footer className="footer">
           <small>© 2022 Chris Guest</small>
       </footer>
   )   
