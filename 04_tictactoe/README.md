@@ -7,6 +7,28 @@ Walkthrough the react `tictactoe` tutorial.
 * immutability
 * chrome extension
 
+## 🏠 Build
+
+```sh
+# configure
+nvm use
+npm install
+```
+
+## 🧪 Test
+
+```sh
+# run tests
+npm test
+```
+
+## ⚡️ Run
+
+```sh
+# start the app
+npm start
+```
+
 ## Creation
 
 ```sh
