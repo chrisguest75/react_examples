@@ -25,10 +25,23 @@ class Cell extends React.Component<ICellProps, ICellState> {
     return this.state.token
   }
 
+  onClick() {
+    let token = this.state.token
+    if (token == "🟡") {
+      token = "🔴"
+    } else {
+      token = "🟡"
+    }
+
+    this.setState((state) => ({
+      token: token
+    }));    
+  }
+
   render() {
     return (
       <div className="cell">
-        <button className="token">
+        <button className="token" onClick={() => this.onClick()}>
           { this.character() }
         </button>
         
