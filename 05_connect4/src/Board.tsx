@@ -1,65 +1,31 @@
 import React from 'react';
 import Cell from './Cell';
 
-function Board() {
-  return (
-    <div className="board">
-      <div className="row">
-      <Cell />
-      <Cell />
-      <Cell />      
-      <Cell />
-      <Cell />
-      <Cell />      
-      <Cell />
+class Board extends React.Component {
+  createBoard = () => {
+    let table = []
+
+    // Outer loop to create parent
+    for (let i = 0; i < 5; i++) {
+      let children = []
+      //Inner loop to create children
+      for (let j = 0; j < 7; j++) {
+        children.push(<Cell />)
+      }
+      //Create the parent and add the children
+      table.push(<div className="row">{children}</div>)
+    }
+    return table
+  }
+
+  render = () => {
+    return (
+      <div className="board">
+          {this.createBoard()}
       </div>
-      <div className="row">
-      <Cell />
-      <Cell />
-      <Cell />      
-      <Cell />
-      <Cell />
-      <Cell />      
-      <Cell />
-      </div>
-      <div className="row">
-      <Cell />
-      <Cell />
-      <Cell />      
-      <Cell />
-      <Cell />
-      <Cell />      
-      <Cell />
-      </div>
-      <div className="row">
-      <Cell />
-      <Cell />
-      <Cell />      
-      <Cell />
-      <Cell />
-      <Cell />      
-      <Cell />
-      </div>
-      <div className="row">
-      <Cell />
-      <Cell />
-      <Cell />      
-      <Cell />
-      <Cell />
-      <Cell />      
-      <Cell />
-      </div>
-      <div className="row">
-      <Cell />
-      <Cell />
-      <Cell />      
-      <Cell />
-      <Cell />
-      <Cell />      
-      <Cell />
-      </div>
-    </div>
-  );
+    );
+  }
+  
 }
 
 export default Board;
