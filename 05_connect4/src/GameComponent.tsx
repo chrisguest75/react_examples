@@ -14,6 +14,7 @@ interface IGameState {
   players: [Player, Player],
   player: number
 }
+
 class GameComponent extends React.Component<IGameProps, IGameState> {
   width = 7
   height = 6
@@ -21,14 +22,15 @@ class GameComponent extends React.Component<IGameProps, IGameState> {
   constructor(props: IGameProps) {
     super(props);
     let board = new Board(this.width, this.height)
-    board.reset([
+    
+    /*board.reset([
       [0,0,0,0,0,0,0],
       [0,0,0,0,0,0,0],
       [0,1,0,0,0,0,0],
       [0,1,0,0,0,0,0],
       [0,1,0,0,0,0,0],
       [0,1,2,2,2,0,0],
-    ])
+    ])*/
     this.state = {
       width: this.width,
       height: this.height,

@@ -35,10 +35,10 @@ class BoardComponent extends React.Component<IBoardProps, IBoardState> {
       let children = []
       //Inner loop to create children
       for (let j = 0; j < this.state.board.columns; j++) {
-        children.push(<Cell board={ this.state.board } x={j} y={i} handleClick={ this.handleClick } />)
+        children.push(<Cell key={`cell_${i}_${j}`} board={ this.state.board } x={j} y={i} handleClick={ this.handleClick } />)
       }
       //Create the parent and add the children
-      table.push(<div className="row">{children}</div>)
+      table.push(<div key={`row_${i}`} className="row">{children}</div>)
     }
     return table
   }

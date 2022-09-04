@@ -4,8 +4,6 @@ class Player {
     protected _colour: number = Counters.None;
     protected _name: string = "";
   
-    constructor() {}
-  
     public get name(): string {
       return this._name;
     }
@@ -16,14 +14,14 @@ class Player {
   
     public takeTurn(board: Board, column: number = -1): [number, number] {
       let taken: boolean = false;
-      if (column == -1) {
+      if (column === -1) {
         column = Math.floor(Math.random() * board.columns);
       }
       let count = 0;
       let coords: [number, number] = [0, 0];
       while (!taken) {
         coords = board.drop(this._colour, column);
-        if (coords[1] != -1) {
+        if (coords[1] !== -1) {
           taken = true;
         } else {
           // turn not taken as column is full

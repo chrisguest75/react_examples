@@ -5,6 +5,7 @@ Build a `connect4` game.
 TODO:
 
 * The this pointer for the click handler is pointing to the cell.  
+    https://www.freecodecamp.org/news/pass-data-between-components-in-react/
 
 ## 🏠 Build
 
@@ -50,3 +51,6 @@ https://react-typescript-cheatsheet.netlify.app/docs/basic/getting-started/class
 
 https://stackoverflow.com/questions/46987816/using-state-in-react-with-typescript
 
+https://stackoverflow.com/questions/22639534/pass-props-to-parent-component-in-react-js
+
+https://www.freecodecamp.org/news/pass-data-between-components-in-react/
