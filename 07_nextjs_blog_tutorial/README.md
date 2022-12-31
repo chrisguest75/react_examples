@@ -13,7 +13,8 @@ npm install
 npm run dev
 ```
 
-Now click the hyperlink. 
+Now click the hyperlink.  
 
+## Resources
 
 
