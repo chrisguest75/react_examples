@@ -50,6 +50,11 @@ Demonstrate another simple example from `freecodecamp`.
 Walkthrough the react `tictactoe` tutorial.  
 [README.md](./04_tictactoe/README.md)  
 
+## 06 - NextJS Tutorial
+
+Demonstrate working through the NextJS tutorial.  
+[README.md](./06_nextjs_tutorial/README.md)  
+
 ## Resources
 
 * Followed linkedin learning [here](https://raybo.org/slides_reactinterface/#/)
