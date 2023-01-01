@@ -12,6 +12,7 @@ Here: ❌ https://nextjs.org/learn/basics/assets-metadata-css/global-styles
 * In development mode, getStaticProps (data for static rendering) runs on each request.
 * getStaticProps only runs on the server-side.
 * To use Server-side Rendering, you need to export getServerSideProps
+* Pages that begin with [ and end with ] are dynamic routes in Next.js.  
 
 ## Install
 
@@ -47,3 +48,9 @@ npx browserslist@latest --update-db
 * Front matter using greymatter library [here](https://github.com/jonschlinkert/gray-matter)
 * The name “SWR” is derived from stale-while-revalidate, a HTTP cache invalidation strategy popularized by HTTP RFC 5861. [here](https://swr.vercel.app/)
 * HTTP RFC 5861 [here](https://www.rfc-editor.org/rfc/rfc5861)  
+* date-fns [here](https://date-fns.org/v2.16.1/docs/format)
+* Dynamic Routes [here](https://nextjs.org/docs/routing/dynamic-routes)  
+* API Routes [here](https://nextjs.org/docs/api-routes/introduction)
+* API Routes Request Helpers [here](https://nextjs.org/docs/api-routes/request-helpers)  
+* API Routes Response Helpers [here](https://nextjs.org/docs/api-routes/response-helpers)  
+* Code Elimination [here](https://next-code-elimination.vercel.app/)  
