@@ -4,9 +4,14 @@ This is a starter template for [Learn Next.js](https://nextjs.org/learn).
 
 Here: ❌ https://nextjs.org/learn/basics/assets-metadata-css/global-styles
 
-## Notes:
+## Notes
 
 * Important: To use CSS Modules, the CSS file name must end with .module.css.
+* Can check prerendering by disabling javascript.  
+* Cmd+Shift+P in DevTools (Cmd+Option+I) to show command palette and disable javascript.  
+* In development mode, getStaticProps (data for static rendering) runs on each request.
+* getStaticProps only runs on the server-side.
+* To use Server-side Rendering, you need to export getServerSideProps
 
 ## Install
 
@@ -35,3 +40,10 @@ npx browserslist@latest --update-db
 * Optimizing Scripts [here](https://nextjs.org/docs/basic-features/script)  
 * Browserslist [here](https://github.com/browserslist/browserslist#browsers-data-updating)  
 * CSS Modules [here](https://github.com/css-modules/css-modules)  
+* Custom App [here](https://nextjs.org/docs/advanced-features/custom-app)  
+* Adding a Global Stylesheet [here](https://nextjs.org/docs/basic-features/built-in-css-support#adding-a-global-stylesheet)
+* Class name generators [here](https://www.npmjs.com/package/clsx)
+* Javscript disable using command menu [here](https://developer.chrome.com/docs/devtools/javascript/disable/)
+* Front matter using greymatter library [here](https://github.com/jonschlinkert/gray-matter)
+* The name “SWR” is derived from stale-while-revalidate, a HTTP cache invalidation strategy popularized by HTTP RFC 5861. [here](https://swr.vercel.app/)
+* HTTP RFC 5861 [here](https://www.rfc-editor.org/rfc/rfc5861)  
