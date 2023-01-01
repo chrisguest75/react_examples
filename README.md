@@ -9,6 +9,8 @@ TODO:
 * API calls
 * Auth
 * Dashboard
+* Dockerise
+* Lambda
 
 ## Extensions
 
