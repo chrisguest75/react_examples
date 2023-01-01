@@ -2,6 +2,14 @@
 
 React examples
 
+TODO:
+
+* TailwindCSS
+* Components
+* API calls
+* Auth
+* Dashboard
+
 ## Extensions
 
 ```sh
@@ -54,6 +62,11 @@ Walkthrough the react `tictactoe` tutorial.
 
 Demonstrate working through the NextJS tutorial.  
 [README.md](./06_nextjs_tutorial/README.md)  
+
+## 07 - NextJS Blog Tutorial
+
+This is a starter template for [Learn Next.js](https://nextjs.org/learn).  
+[README.md](./07_nextjs_blog_tutorial/README.md)  
 
 ## Resources
 
