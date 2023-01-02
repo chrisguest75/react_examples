@@ -2,6 +2,13 @@
 
 Demonstrate using bootstrap in NextJS.  
 
+TODO:
+
+* Dockerise
+* Tidy up the CSS
+* Make a component out of the grid
+* Create a hygen template to build a quick example.
+
 ## Install
 
 ```sh
