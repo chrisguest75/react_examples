@@ -20,7 +20,7 @@ Now click the hyperlink.
 ## Created
 
 ```sh
-create next-app --typescript 08_datagrid
+npx create-next-app --typescript 08_datagrid
 
 npm install @mui/material @emotion/react @emotion/styled
 npm install @mui/material @mui/styled-engine-sc styled-components
