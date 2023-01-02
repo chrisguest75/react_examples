@@ -1,0 +1,49 @@
+
+
+.overlay {
+    border: 0px solid ;
+    height: 100%;
+    margin: 0;
+    width: 100%;
+    float: left;
+    z-index: -100; 
+    position: absolute; 
+    top: 0; 
+    left: 0;
+}
+
+.message {
+    color: aliceblue;
+    margin: 0;
+    position: absolute;   
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    transform: scale(1.0);
+    transform-origin: center;
+}
+.title1 {
+animation: 
+    zoomin 1s cubic-bezier(0.68, -0.6, 0.32, 1.6) both 0s,
+    drop 1s cubic-bezier(0.68, -0.6, 0.32, 1.6) forwards 2s;
+}
+.title2 {
+animation: 
+    zoomin 1s cubic-bezier(0.68, -0.6, 0.32, 1.6) both 3s,
+    drop 1s cubic-bezier(0.68, -0.6, 0.32, 1.6) forwards 5s;
+}
+.title3 {
+animation: 
+    zoomin 1s cubic-bezier(0.68, -0.6, 0.32, 1.6) both 6s,
+    drop 1s cubic-bezier(0.68, -0.6, 0.32, 1.6) forwards 8s;
+}
+
+@keyframes zoomin {
+0% {transform: scale(5.0);opacity: 0;}
+100% {transform: scale(10.0);opacity: 1;}
+}
+
+@keyframes drop {
+0% {}
+100% {opacity: 0;transform: scale(5.0)}
+}

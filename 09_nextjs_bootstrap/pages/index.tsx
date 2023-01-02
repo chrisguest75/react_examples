@@ -15,31 +15,37 @@ export default function Home() {
       src:"images/bouncytext_resize.png",
       title: "Bouncy-Zoom",
       description: "A nice little zoom bounce in and fade out example",
+      effect: "bouncy-text",
     },
     {
       src:"images/letterbyletter_resize.png",
       title: "Letter-by-Letter",
       description: "Same as the bouncy zoom, but with a delay on the fade of some letters",
+      effect: "letter-by-letter",
     },
     {
       src:"images/xor_resize.png",
       title: "XOR",
       description: "A simple XOR overlay",
+      effect: "xor",
     },
     {
       src:"images/blur_resize.png",
       title: "Blur",
       description: "Uses a blur out effect to remove text",
+      effect: "blur",
     },
     {
       src:"images/blobs_resize.png",
       title: "Blobs",
       description: "Similar to the XOR effect but uses a blob",
+      effect: "blobs",
     },
     {
       src:"images/plasma.png",
       title: "Plasma",
       description: "Plasma text effect",
+      effect: "plasma",
     }
   ]
 
