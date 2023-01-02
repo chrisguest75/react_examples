@@ -2,7 +2,7 @@ import styles from './blob.module.css';
 
 export default function Blob() {
   return (
-    <div className={styles.container}>
+    <div className={styles.underlay}>
       <div className={styles.blob}>
         <svg 
           xmlns="http://www.w3.org/2000/svg"

@@ -4,6 +4,8 @@ import { Inter } from '@next/font/google'
 import styles from '../styles/Home.module.css'
 import Blob from '../components/blob'
 import Footer from '../components/footer'
+import NavBar from '../components/navbar'
+import Card from '../components/card'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -16,34 +18,28 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <body>    
-        <Blob></Blob>
-        <div className={styles.overlay} >
-          <nav className="navbar navbar-expand-lg navbar-light bg-light static-top mb-5 shadow nav-opacity">
-            <div className="container">
-              <a className="navbar-brand" href="#">Text Effects</a>
-              <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                    <span className="navbar-toggler-icon"></span>
-              </button>
-            </div>
-          </nav>
-          <div className="container-fluid">
-            <div className="row">
-              <div className="justify-content-center col-sm-6 col-lg-4 mb-3 d-flex align-items-stretch">
-                <div className="card card-styling">
-                  <img src="images/bouncytext_resize.png" className="card-img-top" />
-                  <div className="card-body d-flex flex-column">
-                    <h5 className="card-title">Bouncy-Zoom</h5>
-                    <p className="card-text mb-4">A nice little zoom bounce in and fade out example</p>
-                    <a href="bouncy-zoom.html" className="btn btn-outline-primary w-100 mt-auto align-self-start">Show</a>
-                  </div>
-                </div>
-              </div>
-            </div>
+      <Blob />
+      <div className={styles.overlay} >
+        <NavBar/>
+        <div className="container-fluid">
+          <div className="row">
+            <Card />
+            <Card />
+            <Card />
           </div>
-        </div>   
-        <Footer></Footer>     
-      </body>
+          <div className="row">
+            <Card />
+            <Card />
+            <Card />
+          </div>
+          <div className="row">
+            <Card />
+            <Card />
+            <Card />
+          </div>
+        </div>        
+      </div>   
+      <Footer />
     </>
   )
 }
