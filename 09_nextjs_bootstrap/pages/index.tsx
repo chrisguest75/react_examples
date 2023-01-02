@@ -10,6 +10,39 @@ import Card from '../components/card'
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
+  const cards = [ 
+    {
+      src:"images/bouncytext_resize.png",
+      title: "Bouncy-Zoom",
+      description: "A nice little zoom bounce in and fade out example",
+    },
+    {
+      src:"images/letterbyletter_resize.png",
+      title: "Letter-by-Letter",
+      description: "Same as the bouncy zoom, but with a delay on the fade of some letters",
+    },
+    {
+      src:"images/xor_resize.png",
+      title: "XOR",
+      description: "A simple XOR overlay",
+    },
+    {
+      src:"images/blur_resize.png",
+      title: "Blur",
+      description: "Uses a blur out effect to remove text",
+    },
+    {
+      src:"images/blobs_resize.png",
+      title: "Blobs",
+      description: "Similar to the XOR effect but uses a blob",
+    },
+    {
+      src:"images/plasma.png",
+      title: "Plasma",
+      description: "Plasma text effect",
+    }
+  ]
+
   return (
     <>
       <Head>
@@ -23,19 +56,14 @@ export default function Home() {
         <NavBar/>
         <div className="container-fluid">
           <div className="row">
-            <Card />
-            <Card />
-            <Card />
+            <Card { ...cards[0] } />
+            <Card { ...cards[1] } />
+            <Card { ...cards[2] } />
           </div>
           <div className="row">
-            <Card />
-            <Card />
-            <Card />
-          </div>
-          <div className="row">
-            <Card />
-            <Card />
-            <Card />
+            <Card { ...cards[3] } />
+            <Card { ...cards[4] } />
+            <Card { ...cards[5] } />
           </div>
         </div>        
       </div>   
