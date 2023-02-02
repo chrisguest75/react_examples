@@ -13,6 +13,14 @@ https://stackoverflow.com/questions/36862334/get-viewport-window-height-in-react
 https://github.com/chrisguest75/democrew_examples/blob/master/08_waves/index.html
 https://github.com/chrisguest75/react_examples/pull/7
 
+
+IDEAS:
+
+* Plot a waveform to be in time with audio
+* Save a set of images
+* Render the changes directly into a video
+* Different aspect ratios.
+
 ## Install
 
 ```sh
