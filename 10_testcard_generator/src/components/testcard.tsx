@@ -1,8 +1,35 @@
 import styles from 'testcard.module.css';
+import React, { useRef, useEffect } from 'react'
 import Link from 'next/link';
 
+
 export default function TestCard( {} ) {
-    function generate_lines() {
+    const canvasRef = useRef(null)
+    const draw = (ctx, frameCount: number) => {
+      ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+      ctx.fillStyle = 'blue';
+      ctx.beginPath();
+      ctx.arc(170, 50, 30 * Math.sin(frameCount * 0.05) ** 2, 0, 2 * Math.PI);
+      ctx.fill();
+    };
+
+    useEffect(() => {
+        const canvas = canvasRef.current;
+        const context = canvas.getContext('2d');
+        let frameCount = 0;
+        let animationFrameId = 0;
+        const render = () => {
+          frameCount++;
+          draw(context, frameCount);
+          animationFrameId = window.requestAnimationFrame(render);
+        };
+        render();
+        return () => {
+          window.cancelAnimationFrame(animationFrameId);
+        };
+      }, []);
+
+    /*function generate_lines() {
         const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
         const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
     
@@ -43,12 +70,12 @@ export default function TestCard( {} ) {
         // Create a linear gradient
         var gradient1 = ctx.createLinearGradient(0, 0, width,height);
     
-        /*gradient.addColorStop(0, 'black');
-        gradient.addColorStop(1, 'white');*/
+        // gradient.addColorStop(0, 'black');
+        // gradient.addColorStop(1, 'white');
     
-        /*gradient.addColorStop(0, 'hsla(190,70%,50%,0.3)');
-        gradient.addColorStop(.5, 'hsla(90,60%,70%,5.0)');
-        gradient.addColorStop(1, 'hsla(60,60%,70%,5.3)');*/
+        // gradient.addColorStop(0, 'hsla(190,70%,50%,0.3)');
+        // gradient.addColorStop(.5, 'hsla(90,60%,70%,5.0)');
+        // gradient.addColorStop(1, 'hsla(60,60%,70%,5.3)');
     
         gradient1.addColorStop(0, 'purple');
         gradient1.addColorStop(.10, 'blue');
@@ -85,9 +112,9 @@ export default function TestCard( {} ) {
             ctx.fillStyle = gradient2;                
             ctx.fill();
         }
-    }        
+    }*/        
     
     return (
-        <canvas width="100%" height="100%"></canvas>
+        <canvas style={{ width: '100%', height: '100%' }} ref={canvasRef} />
     );
 }
