@@ -5,7 +5,7 @@ Create a test generation app.
 TODO:
 
 THIS: https://blog.openreplay.com/2d-sketches-with-react-and-the-canvas-api
-
+https://stackoverflow.com/questions/36862334/get-viewport-window-height-in-reactjs
 
 * Create a canvas component
 * Draw a simple testcard

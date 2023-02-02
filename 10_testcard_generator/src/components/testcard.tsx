@@ -5,41 +5,11 @@ import Link from 'next/link';
 
 export default function TestCard( {} ) {
     const canvasRef = useRef(null)
+
     const draw = (ctx, frameCount: number) => {
-      ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-      ctx.fillStyle = 'blue';
-      ctx.beginPath();
-      ctx.arc(170, 50, 30 * Math.sin(frameCount * 0.05) ** 2, 0, 2 * Math.PI);
-      ctx.fill();
-    };
-
-    useEffect(() => {
-        const canvas = canvasRef.current;
-        const context = canvas.getContext('2d');
-        let frameCount = 0;
-        let animationFrameId = 0;
-        const render = () => {
-          frameCount++;
-          draw(context, frameCount);
-          animationFrameId = window.requestAnimationFrame(render);
-        };
-        render();
-        return () => {
-          window.cancelAnimationFrame(animationFrameId);
-        };
-      }, []);
-
-    /*function generate_lines() {
-        const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
-        const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
-    
-        let canvas = document.querySelector('#canvas_container');
         const lines = 100;
-        const width = vw;
+        const width = 300;
         const height = 3000;
-        canvas.width = width;
-        canvas.height = height;
-        let ctx = canvas.getContext('2d');
     
         const line0_width = width;
         let line0_coords = [];
@@ -112,8 +82,48 @@ export default function TestCard( {} ) {
             ctx.fillStyle = gradient2;                
             ctx.fill();
         }
-    }*/        
-    
+    }        
+ 
+
+
+    /*
+    const draw = (ctx, frameCount: number) => {
+      ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+      ctx.fillStyle = 'blue';
+      ctx.beginPath();
+      ctx.arc(170, 50, 30 * Math.sin(frameCount * 0.05) ** 2, 0, 2 * Math.PI);
+      ctx.fill();
+    };
+    */
+   
+    useEffect(() => {
+        const canvas = canvasRef.current;
+        const context = canvas.getContext('2d');
+        let frameCount = 0;
+        let animationFrameId = 0;
+
+        // const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
+        // const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
+
+        // let canvas = document.querySelector('#canvas_container');
+        // const lines = 100;
+        // const width = vw;
+        // const height = 3000;
+        // canvas.width = width;
+        // canvas.height = height;
+
+        const render = () => {
+          frameCount++;
+          draw(context, frameCount);
+          animationFrameId = window.requestAnimationFrame(render);
+        };
+        render();
+        return () => {
+          window.cancelAnimationFrame(animationFrameId);
+        };
+      }, []);
+
+   
     return (
         <canvas style={{ width: '100%', height: '100%' }} ref={canvasRef} />
     );
