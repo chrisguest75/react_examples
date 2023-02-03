@@ -177,6 +177,48 @@ export default function TestCard( {} ) {
         ctx.arc(x, y, (boxHeight * 1.5), 0, 2 * Math.PI);
         ctx.stroke();
         ctx.fill();
+
+        ctx.fillStyle = '#FFFFFF';
+        ctx.lineWidth = (boxHeight);
+        ctx.beginPath();
+        ctx.arc(x, y, (boxHeight), ((2 * Math.PI) / 8) * 0, ((2 * Math.PI) / 8) * 1);
+        ctx.stroke();
+        ctx.closePath();
+        /*ctx.beginPath();
+        ctx.arc(x, y, (boxHeight), ((2 * Math.PI) / 8) * 2, ((2 * Math.PI) / 8) * 1);
+        ctx.stroke();
+        ctx.closePath();*/
+
+        /*ctx.fillStyle = '#000000';
+        ctx.beginPath();
+        ctx.arc(x, y, (boxHeight), 0.125, 0.20 * Math.PI);
+        ctx.stroke();*/
+
+
+        ctx.fillStyle = '#000000';
+        ctx.beginPath();
+        ctx.lineWidth = 5;
+        ctx.arc(x, y, (boxHeight * 0.5), 0, 2 * Math.PI);
+        ctx.stroke();
+        ctx.fill();
+        ctx.beginPath();
+        ctx.lineWidth = 5;
+        ctx.arc(x, y, (boxHeight * 0.40), 0, 2 * Math.PI);
+        ctx.stroke();
+        ctx.fill();
+        ctx.beginPath();
+        ctx.lineWidth = 5;
+        ctx.arc(x, y, (boxHeight * 0.30), 0, 2 * Math.PI);
+        ctx.stroke();
+        ctx.fill();
+        ctx.beginPath();
+        ctx.lineWidth = 5;
+        ctx.arc(x, y, (boxHeight * 0.20), 0, 2 * Math.PI);
+        ctx.stroke();
+        ctx.fill();
+
+
+
       }
 
       const inside = [
