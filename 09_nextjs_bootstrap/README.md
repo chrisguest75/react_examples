@@ -2,9 +2,10 @@
 
 Demonstrate using bootstrap in NextJS.  
 
+NOTE: Not all of the examples are working after being converted.  
+
 TODO:
 
-* Dockerise
 * Tidy up the CSS
 * Make a component out of the grid
 * Create a hygen template to build a quick example.
@@ -24,7 +25,6 @@ npm run dev
 
 Now click the hyperlink.  
  
-
 ## How to run
 
 ```sh
