@@ -24,11 +24,13 @@
   top: 0; 
   left: 0;
 }
+
 .row {
   z-index: -100; 
   width: 100%; 
   position: absolute; 
 }
+
 .title {
   font-family: 'Nunito', sans-serif;
   font-size: 10vw;
@@ -47,6 +49,6 @@
   -webkit-text-fill-color: transparent;
 }
 
-h1 span:hover {
+/*h1 span:hover {
   -webkit-text-fill-color: aquamarine;
-}
+}*/

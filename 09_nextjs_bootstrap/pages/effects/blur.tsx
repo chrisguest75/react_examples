@@ -15,10 +15,8 @@ export default function Blur() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <p>This is in the background</p>  
       <div className={styles.overlay}>
         <p className={`${styles.message} ${styles.title}`}><span>H</span><span>e</span><span>l</span><span>l</span><span>o</span><span>&nbsp;</span><span>W</span><span>o</span><span>r</span><span>l</span><span>d</span></p>
-
       </div>
     </>
   )

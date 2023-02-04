@@ -15,12 +15,9 @@ export default function Xor() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <p>This is in the background</p>  
       <div className={styles.overlay}>
-        <div className={styles.page}>
           <div className={styles.text}>Hello World</div>
           <div className={styles.box}></div>
-        </div>
       </div>
     </>
   )

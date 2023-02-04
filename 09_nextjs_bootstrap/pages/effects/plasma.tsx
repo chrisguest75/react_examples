@@ -1,7 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.css'
 import Head from 'next/head'
 import { Inter } from '@next/font/google'
-import styles from './xor.module.css'
+import styles from './plasma.module.css'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -15,12 +15,11 @@ export default function Plasma() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <p>This is in the background</p>  
       <div className={styles.overlay}>
       <div className={styles.underlay}>
-        <div className={styles.row} >
-            <div><h1 id="plasma" className={styles.text} ><span>*</span><span>H</span><span>E</span><span>L</span><span>L</span><span>O</span><span>&nbsp;</span><span>W</span><span>O</span><span>R</span><span>L</span><span>D</span><span>*</span></h1></div>
-        </div>
+      <div className={styles.row} >
+          <div><h1 id="plasma" className={styles.text} ><span>*</span><span>H</span><span>E</span><span>L</span><span>L</span><span>O</span><span>&nbsp;</span><span>W</span><span>O</span><span>R</span><span>L</span><span>D</span><span>*</span></h1></div>
+      </div>
     </div>
     </div>
     </>
