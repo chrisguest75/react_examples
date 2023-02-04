@@ -1,0 +1,54 @@
+
+
+.overlay {
+    background-color: #fff;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    font-family: sans-serif;
+    filter: invert(100%);
+    height: 100vh;
+    margin: 0;
+    background: linear-gradient(#000000, #000000)  no-repeat;
+
+}
+
+.underlay {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%; 
+  height: 100%;
+  z-index: -100; 
+  position: absolute; 
+  top: 0; 
+  left: 0;
+}
+
+.row {
+  z-index: -100; 
+  width: 100%; 
+  position: absolute; 
+}
+
+.title {
+  font-family: 'Nunito', sans-serif;
+  font-size: 10vw;
+  font-weight: 900;
+  letter-spacing: 0.1rem; 
+  text-align: center;
+}
+
+.plasma {
+  color: transparent;
+      background: linear-gradient(217deg, rgba(255,0,0,.8), rgba(255,0,0,0) 70.71%),
+              linear-gradient(127deg, rgba(0,255,0,.8), rgba(0,255,0,0) 40.71%),
+              linear-gradient(336deg, rgba(0,0,255,.8), rgba(0,0,255,0) 70.71%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/*h1 span:hover {
+  -webkit-text-fill-color: aquamarine;
+}*/

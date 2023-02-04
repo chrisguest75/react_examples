@@ -1,0 +1,60 @@
+
+
+.overlay {
+    background-color: #fff;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    font-family: sans-serif;
+    filter: invert(100%);
+    height: 100vh;
+    margin: 0;
+    background: linear-gradient(#000000, #000000)  no-repeat;
+
+}
+
+.text {
+    color: #fff;
+    font-size: 100px;
+    font-weight: 600;
+}
+
+.box {
+    background-color: #fff;
+    height: 100px;
+    width: 100px;
+    mix-blend-mode: difference;
+    animation: 
+          blobs 9s linear infinite alternate, 
+          sinex 35s ease-in-out both infinite
+}
+
+@keyframes sinex {
+    0% {
+      transform: translateX(0);
+    }  
+    50% {
+      transform: translateX(-650px);
+    }  
+    100% {
+      transform: translateX(0px);
+    }  
+}
+
+.blobs{
+  background:#fff;
+}
+
+@keyframes blobs{
+    0% {border-radius:51% 88% 60% 57% / 62% 82% 73% 53%} 
+    10% {border-radius:75% 70% 61% 89% / 68% 85% 79% 79%}
+    20% {border-radius:62% 41% 72% 75% / 69% 41% 98% 67%}
+    30% {border-radius:97% 28% 73% 81% / 64% 33% 78% 77%}
+    40% {border-radius:50% 72% 59% 58% / 32% 80% 46% 62%}
+    50% {border-radius:45% 45% 58% 56% / 51% 80% 43% 52%}
+    60% {border-radius:34% 92% 56% 89% / 36% 59% 67% 54%}
+    70% {border-radius:60% 51% 63% 80% / 79% 33% 82% 41%}
+    80% {border-radius:62% 73% 62% 85% / 67% 41% 97% 60%}
+    90% {border-radius:52% 40% 43% 81% / 36% 49% 48% 74%}
+    100% {border-radius:85% 63% 74% 47% / 70% 62% 62% 36%}
+}

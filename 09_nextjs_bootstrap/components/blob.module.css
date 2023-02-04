@@ -1,0 +1,17 @@
+
+.underlay {
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  border: 0px solid ;
+  height: 100%;
+  width: 100%;
+  z-index: -100; 
+  position: absolute; 
+}
+.blob {
+  height: 100%;
+  width: 100%;
+  filter: blur(3px);
+}
+

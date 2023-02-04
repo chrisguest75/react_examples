@@ -1,0 +1,63 @@
+
+
+.overlay {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    border: 0px solid ;
+    height: 100%;
+    width: 100%;
+    z-index: -100; 
+    position: absolute; 
+    background: linear-gradient(#000000, #000000)  no-repeat;
+
+}
+
+.message {
+    color: aliceblue;
+    transform: translate(-50%, -50%);
+    transform: scale(1.0);
+    transform-origin: center;
+}
+
+.title {
+    animation: 
+      zoomin 1s cubic-bezier(0.68, -0.6, 0.32, 1.6) both,
+      drop 1s cubic-bezier(0.68, -0.6, 0.32, 1.6) forwards 2s;
+  }
+
+.span {
+    animation: 
+      letter 1s cubic-bezier(0.87, 0, 0.13, 1) both 0s; 
+}
+
+.span:nth-child(odd) {
+    animation-delay: 0.2s;
+}
+
+.span:nth-child(even) {
+    animation-delay: 0.1s;
+}  
+
+.span:nth-child(6) {
+    animation-delay: 0.5s;
+}
+
+.span:nth-child(2) {
+    animation-delay: 0.0s;
+}
+
+@keyframes letter {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+}
+
+@keyframes zoomin {
+    0% {transform: scale(5.0);}
+    100% {transform: scale(10.0);}
+  }
+
+  @keyframes drop {
+    0% {}
+    100% {opacity: 0;transform: scale(5.0);}
+  }

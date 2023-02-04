@@ -1,0 +1,11 @@
+html, body {
+  min-height: 100%;          
+}
+body {
+     background: linear-gradient( #fbccff,#d616e7)  no-repeat;
+}
+.overlay {
+  border: 0px solid ;
+  height: 100%;
+  width: 100%;
+}
