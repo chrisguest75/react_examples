@@ -5,5 +5,8 @@
   align-items: center;
   padding: 6rem;
   min-height: 100vh;
+
+  background: linear-gradient(#000000, #000000)  no-repeat;
+
 }
 

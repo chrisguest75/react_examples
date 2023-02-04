@@ -1,0 +1,9 @@
+
+.canvas {
+    background-color: #FFFFFF;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    font-family: "Roboto Condensed Bold";
+    padding-top: 2em;
+}

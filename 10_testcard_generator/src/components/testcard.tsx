@@ -1,4 +1,4 @@
-import styles from 'testcard.module.css';
+import styles from './testcard.module.css';
 import React, { useRef, useEffect } from 'react'
 import Link from 'next/link';
 
@@ -6,7 +6,7 @@ import Link from 'next/link';
 export default function TestCard( {} ) {
     const canvasRef = useRef(null)
 
-    function lines(ctx) {
+    function lines(ctx: CanvasRenderingContext2D) {
       const lines = 100;
       const width = 300;
       const height = 3000;
@@ -84,7 +84,7 @@ export default function TestCard( {} ) {
       }
     }
 
-    function card(ctx, width: number, height: number) {
+    function card(ctx: CanvasRenderingContext2D, width: number, height: number) {
       const boxWidth = 72;
       const boxHeight = 72;
       const xInset = (boxWidth / 3) * 2;
@@ -347,16 +347,17 @@ export default function TestCard( {} ) {
         ctx.fill();  
       }
 
-      ctx.font = "bold 50px Roboto Mono";
+      ctx.font = "50px Roboto Condensed";
       ctx.fillStyle = "#FFFFFF";
-      ctx.fillText("TRINT TEST", (boxWidth * 11) , (boxHeight * 3.5) - yInset);
-      ctx.fillText(`${width}*${height} 16:9`, (boxWidth * 10.75) , (boxHeight * 11.75) - yInset);
+      ctx.textAlign = "center"
+      ctx.fillText("TRINT TEST", (boxWidth * 13) , (boxHeight * 3.5) - yInset);
+      ctx.fillText(`${width}*${height} 16:9`, (boxWidth * 13) , (boxHeight * 11.75) - yInset);
 
       ctx.restore()
 
     }
 
-    const draw = (ctx, frameCount: number, width: number, height: number) => {
+    const draw = (ctx: CanvasRenderingContext2D, frameCount: number, width: number, height: number) => {
       //lines(ctx);
       card(ctx, width, height);
     }        
@@ -418,6 +419,6 @@ export default function TestCard( {} ) {
 
    
     return (
-        <canvas style={{ width: '100%', height: '100%' }} ref={canvasRef} />
+        <canvas className={styles.canvas} style={{ width: '100%', height: '100%' }} ref={canvasRef} />
     );
 }

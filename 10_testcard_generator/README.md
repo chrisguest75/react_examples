@@ -1,14 +1,12 @@
 # README
 
-Create a test generation app.  
+Create a testcard generation page.  
 
 TODO:
 
 THIS: https://blog.openreplay.com/2d-sketches-with-react-and-the-canvas-api
 https://stackoverflow.com/questions/36862334/get-viewport-window-height-in-reactjs
 
-* Create a canvas component
-* Draw a simple testcard
 * Save as images
 https://github.com/chrisguest75/democrew_examples/blob/master/08_waves/index.html
 https://github.com/chrisguest75/react_examples/pull/7
