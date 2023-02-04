@@ -10,6 +10,8 @@
     position: absolute; 
     top: 0; 
     left: 0;
+    background: linear-gradient(#000000, #000000)  no-repeat;
+
 }
 
 .message {

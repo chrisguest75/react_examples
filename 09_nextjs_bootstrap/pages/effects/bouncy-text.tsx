@@ -18,11 +18,11 @@ export default function BouncyText() {
       <p>This is in the background</p>  
       <div className={styles.overlay}>
         <div className={styles.page}>
-          <p className="message title1">Hello World</p>
+          <p className={`${styles.message} ${styles.title1}`}>Hello World</p>
 
-          <p className="message title2">Bouncy Text</p>
+          <p className={`${styles.message} ${styles.title2}`}>Bouncy Text</p>
 
-          <p className="message title3">Intro</p>
+          <p className={`${styles.message} ${styles.title3}`}>Intro</p>
         </div>
       </div>
     </>
