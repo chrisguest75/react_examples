@@ -85,13 +85,14 @@ export default function TestCard( {} ) {
     }
 
     function card(ctx, width: number, height: number) {
-      const boxWidth = 73;
-      const boxHeight = 73;
+      const boxWidth = 72;
+      const boxHeight = 72;
       const xInset = (boxWidth / 3) * 2;
       const yInset = (boxHeight / 2) * 1;
       const xMargin = 6;
       const yMargin = 6;
 
+      // borders
       let yOdd = false
       for (let y = -yInset; y < height; y += boxHeight) {
         let xOdd = false
@@ -126,20 +127,21 @@ export default function TestCard( {} ) {
         yOdd == false ? yOdd = true: yOdd = false
       }
 
+      // big boxes
       const boxes = [
         [ (boxWidth * 3) - xInset, (boxHeight * 5) - yInset, (boxWidth * 2), (boxHeight * 2), '#888888'],
         [ (boxWidth * 3) - xInset, (boxHeight * 8) - yInset, (boxWidth * 2), (boxHeight * 2), '#888888'],
-        [ (boxWidth * 22) - xInset, (boxHeight * 5) - yInset, (boxWidth * 2), (boxHeight * 2), '#888888'],
-        [ (boxWidth * 22) - xInset, (boxHeight * 8) - yInset, (boxWidth * 2), (boxHeight * 2), '#888888'],
+        [ (boxWidth * 23) - xInset, (boxHeight * 5) - yInset, (boxWidth * 2), (boxHeight * 2), '#888888'],
+        [ (boxWidth * 23) - xInset, (boxHeight * 8) - yInset, (boxWidth * 2), (boxHeight * 2), '#888888'],
         [ (boxWidth * 6) - xInset, (boxHeight * 2) - yInset, (boxWidth), (boxHeight * 6), '#13836C'],
         [ (boxWidth * 7) - xInset, (boxHeight * 2) - yInset, (boxWidth), (boxHeight * 2), '#4D66A9'],
         [ (boxWidth * 6) - xInset, (boxHeight * 8) - yInset, (boxWidth), (boxHeight * 6), '#B54E68'],
         [ (boxWidth * 7) - xInset, (boxHeight * 12) - yInset, (boxWidth), (boxHeight * 2), '#927227'],
-        [ (boxWidth * 19) - xInset, (boxHeight * 2) - yInset, (boxWidth), (boxHeight * 2), '#4D66A9'],
-        [ (boxWidth * 20) - xInset, (boxHeight * 2) - yInset, (boxWidth), (boxHeight * 6), '#6A8328'],
-        [ (boxWidth * 20) - xInset, (boxHeight * 8) - yInset, (boxWidth), (boxHeight * 6), '#655A9D'],
+        [ (boxWidth * 20) - xInset, (boxHeight * 2) - yInset, (boxWidth), (boxHeight * 2), '#4D66A9'],
+        [ (boxWidth * 21) - xInset, (boxHeight * 2) - yInset, (boxWidth), (boxHeight * 6), '#6A8328'],
+        [ (boxWidth * 21) - xInset, (boxHeight * 8) - yInset, (boxWidth), (boxHeight * 6), '#655A9D'],
 
-        [ (boxWidth * 19) - xInset, (boxHeight * 12) - yInset, (boxWidth), (boxHeight * 2), '#927227'],
+        [ (boxWidth * 20) - xInset, (boxHeight * 12) - yInset, (boxWidth), (boxHeight * 2), '#927227'],
 
       ]
       
@@ -159,11 +161,38 @@ export default function TestCard( {} ) {
         ctx.fill();  
       }
 
+      // grills
+      const grills = [
+        [ (boxWidth * 3) - xInset, (boxHeight * 5) - yInset + ((boxHeight / 5) * 0), (boxWidth * 1), (boxHeight / 5), '#000000'],
+        [ (boxWidth * 3) - xInset, (boxHeight * 5) - yInset + ((boxHeight / 5) * 1), (boxWidth * 1), (boxHeight / 5), '#FFFFFF'],
+        [ (boxWidth * 3) - xInset, (boxHeight * 5) - yInset + ((boxHeight / 5) * 2), (boxWidth * 1), (boxHeight / 5), '#000000'],
+        [ (boxWidth * 3) - xInset, (boxHeight * 5) - yInset + ((boxHeight / 5) * 3), (boxWidth * 1), (boxHeight / 5), '#FFFFFF'],
+        [ (boxWidth * 3) - xInset, (boxHeight * 5) - yInset + ((boxHeight / 5) * 4), (boxWidth * 1), (boxHeight / 5), '#000000'],
+      ]
+      
+      for (let index = 0; index < grills.length; index++)
+      {
+        let x = grills[index][0];
+        let y = grills[index][1];
+        let w = grills[index][2];
+        let h = grills[index][3];
+        ctx.fillStyle = grills[index][4];
+        ctx.beginPath();
+        ctx.moveTo(x, y);
+        ctx.lineTo(x + w, y);
+        ctx.lineTo(x + w, y + h);
+        ctx.lineTo(x, y + h);
+        ctx.closePath();
+        ctx.fill();  
+      }
+
+
+      // circles
       const circles = [
         [ (boxWidth * 4) - xInset, (boxHeight * 3) - yInset ],
         [ (boxWidth * 4) - xInset, (boxHeight * 13) - yInset ],
-        [ (boxWidth * 23) - xInset, (boxHeight * 3) - yInset ],
-        [ (boxWidth * 23) - xInset, (boxHeight * 13) - yInset ],
+        [ (boxWidth * 24) - xInset, (boxHeight * 3) - yInset ],
+        [ (boxWidth * 24) - xInset, (boxHeight * 13) - yInset ],
       ]
 
       for (let index = 0; index < circles.length; index++)
@@ -177,6 +206,7 @@ export default function TestCard( {} ) {
         ctx.arc(x, y, (boxHeight * 1.5), 0, 2 * Math.PI);
         ctx.stroke();
         ctx.fill();
+        ctx.closePath();
 
         ctx.fillStyle = '#FFFFFF';
         ctx.lineWidth = (boxHeight);
@@ -184,6 +214,35 @@ export default function TestCard( {} ) {
         ctx.arc(x, y, (boxHeight), ((2 * Math.PI) / 8) * 0, ((2 * Math.PI) / 8) * 1);
         ctx.stroke();
         ctx.closePath();
+        // ctx.fillStyle = '#FF0000';
+        // ctx.lineWidth = (boxHeight);
+        // ctx.beginPath();
+        // ctx.arc(x, y, (boxHeight), ((2 * Math.PI) / 16) * 0, ((2 * Math.PI) / 16) * 2);
+        // ctx.stroke();
+        // ctx.closePath();
+
+        ctx.fillStyle = '#FFFFFF';
+        ctx.lineWidth = (boxHeight);
+        ctx.beginPath();
+        ctx.arc(x, y, (boxHeight), ((2 * Math.PI) / 8) * 2, ((2 * Math.PI) / 8) * 3);
+        ctx.stroke();
+        ctx.closePath();
+
+        ctx.fillStyle = '#FFFFFF';
+        ctx.lineWidth = (boxHeight);
+        ctx.beginPath();
+        ctx.arc(x, y, (boxHeight), ((2 * Math.PI) / 8) * 4, ((2 * Math.PI) / 8) * 5);
+        ctx.stroke();
+        ctx.closePath();
+
+        ctx.fillStyle = '#FFFFFF';
+        ctx.lineWidth = (boxHeight);
+        ctx.beginPath();
+        ctx.arc(x, y, (boxHeight), ((2 * Math.PI) / 8) * 6, ((2 * Math.PI) / 8) * 7);
+        ctx.stroke();
+        ctx.closePath();
+
+
         /*ctx.beginPath();
         ctx.arc(x, y, (boxHeight), ((2 * Math.PI) / 8) * 2, ((2 * Math.PI) / 8) * 1);
         ctx.stroke();
@@ -216,11 +275,9 @@ export default function TestCard( {} ) {
         ctx.arc(x, y, (boxHeight * 0.20), 0, 2 * Math.PI);
         ctx.stroke();
         ctx.fill();
-
-
-
       }
 
+      // big circle
       const inside = [
         [ (boxWidth * 8) - xInset, (boxHeight * 2) - yInset, (boxWidth * 12), (boxHeight * 2), '#FFFFFF'],
 
@@ -263,9 +320,11 @@ export default function TestCard( {} ) {
         [ (boxWidth * 8) - xInset, (boxHeight * 11) - yInset, (boxWidth * 11), (boxHeight * 1), '#FFFFFF'],
 
         [ (boxWidth * 8) - xInset, (boxHeight * 12) - yInset, (boxWidth * 5), (boxHeight * 2), '#B3B604'],
-        [ (boxWidth * 13) - xInset, (boxHeight * 12) - yInset, (boxWidth * 1), (boxHeight * 2), '#B10004'],
-        [ (boxWidth * 14) - xInset, (boxHeight * 12) - yInset, (boxWidth * 5), (boxHeight * 2), '#B3B604'],
+        [ (boxWidth * 13) - xInset, (boxHeight * 12) - yInset, (boxWidth * 2), (boxHeight * 2), '#B10004'],
+        [ (boxWidth * 15) - xInset, (boxHeight * 12) - yInset, (boxWidth * 5), (boxHeight * 2), '#B3B604'],
 
+        [ (boxWidth * 11.5) - xInset, (boxHeight * 2.5) - yInset, (boxWidth * 4.5), (boxHeight * 1.5), '#000000'],
+        [ (boxWidth * 11) - xInset, (boxHeight * 11) - yInset, (boxWidth * 5.5), (boxHeight * 1), '#000000'],
       ]
 
       ctx.save();
@@ -287,13 +346,19 @@ export default function TestCard( {} ) {
         ctx.closePath();
         ctx.fill();  
       }
- 
+
+      ctx.font = "bold 50px Roboto Mono";
+      ctx.fillStyle = "#FFFFFF";
+      ctx.fillText("TRINT TEST", (boxWidth * 11) , (boxHeight * 3.5) - yInset);
+      ctx.fillText(`${width}*${height} 16:9`, (boxWidth * 10.75) , (boxHeight * 11.75) - yInset);
+
       ctx.restore()
+
     }
 
-    const draw = (ctx, frameCount: number) => {
+    const draw = (ctx, frameCount: number, width: number, height: number) => {
       //lines(ctx);
-      card(ctx, 1920, 1080);
+      card(ctx, width, height);
     }        
  
 
@@ -321,14 +386,28 @@ export default function TestCard( {} ) {
         // const lines = 100;
         // const width = vw;
         // const height = 3000;
+
+        // 16:9
         canvas.width = 1920;
         canvas.height = 1080;
+
+        // 9:16
+        // canvas.width = 1080;
+        // canvas.height = 1920;
+
+        // 4:3
+        // canvas.width = 1440;
+        // canvas.height = 1080;
+        
+        // 5:4
+        // canvas.width = 1350;
+        // canvas.height = 1080;
 
 
         const render = () => {
           //console.log({width: canvas.width, height:canvas.height });
           frameCount++;
-          draw(context, frameCount);
+          draw(context, frameCount, canvas.width, canvas.height);
           animationFrameId = window.requestAnimationFrame(render);
         };
         render();
