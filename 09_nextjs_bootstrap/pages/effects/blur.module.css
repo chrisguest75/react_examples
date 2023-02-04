@@ -1,0 +1,42 @@
+
+
+.overlay {
+  display:flex;
+  justify-content:center;
+  align-items:center;
+    border: 0px solid ;
+    height: 100%;
+    width: 100%;
+    z-index: -100; 
+    position: absolute; 
+    background: linear-gradient(#000000, #000000)  no-repeat;
+
+}
+
+.message {
+  color: aliceblue;
+  transform: translate(-50%, -50%);
+  transform: scale(10.0);
+  transform-origin: center;
+}
+.title {
+  animation: 
+    fadein 2s ease-in both 0s,
+    blurout 2s ease-in forwards 2s,
+    fadeout 1s ease-in forwards 3s;
+}
+
+@keyframes fadein {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+}
+
+@keyframes fadeout {
+  0% {opacity: 1;}
+  100% {opacity: 0;}
+}
+
+@keyframes blurout {
+  0% { filter: blur(0px) }
+  100% { filter: blur(10px) }
+}
