@@ -19,7 +19,11 @@ export default function Home() {
       </Head>
       <NavBar />
       <ToolBar />
-      <TestCard />
+
+
+      <div>A test card, also known as a test pattern or calibration card, is a pattern of images and colors used to adjust and test the settings and performance of a television or video display system. It is typically used to align the brightness, contrast, color balance, and other settings to produce a clear and accurate picture. Test cards often include a series of patterns, such as bars, grids, and color swatches, that help technicians and users to adjust the display settings.
+      </div>
+
     </>
   )
 }

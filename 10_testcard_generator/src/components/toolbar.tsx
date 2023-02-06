@@ -3,10 +3,15 @@ import ButtonToolbar from 'react-bootstrap/ButtonToolbar';
 import Button from 'react-bootstrap/Button';
 
 export default function ToolBar() {
+
+  function handleClick() {
+    console.log("increment like count")
+  }
+
   return (
     <div className={styles.toolbar}>
       <ButtonToolbar>
-        <Button variant="primary">Primary</Button>{' '}
+        <Button variant="primary" onClick={handleClick}>Primary</Button>{' '}
         <Button variant="secondary">Secondary</Button>{' '}
         <Button variant="success">Success</Button>{' '}
         <Button variant="warning">Warning</Button>{' '}

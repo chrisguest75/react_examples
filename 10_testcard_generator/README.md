@@ -68,3 +68,4 @@ https://blog.openreplay.com/2d-sketches-with-react-and-the-canvas-api
 
 https://react-bootstrap.github.io/getting-started/introduction/
 
+https://nextjs.org/learn/foundations/from-javascript-to-react/adding-interactivity-with-state
