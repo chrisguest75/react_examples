@@ -27,44 +27,37 @@ export default function Home() {
     const width = ctx.canvas.width;
     const height = ctx.canvas.height;
 
-    ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+    ctx.fillRect(0, 0, width, height);
 
     const boxWidth = 72;
     const boxHeight = 72;
-    const xInset = (boxWidth / 3) * 2;
-    const yInset = (boxHeight / 2) * 1;
+
+    let boxes_x = width / boxWidth;
+    let boxes_y = height / boxHeight;
+
+    let x_start = (boxWidth - (width % boxWidth)) / 2;
+    let y_start = (boxHeight - (height % boxHeight)) / 2;
+
     const xMargin = 6;
     const yMargin = 6;
 
-    ctx.fillStyle = "#FFFFFF";
-    ctx.fillRect(0, 0, width, height);
-
     // borders
-    let yOdd = false;
-    for (let y = -yInset; y < height; y += boxHeight) {
-      let xOdd = false;
-      for (let x = -xInset; x < width; x += boxWidth) {
+    let edge_colours = ["#000000", "#FFFFFF"];
+    let normal_colours = ["#888888"];
+
+    let yCount = 0;
+    for (let y = -y_start; y < height; y += boxHeight) {
+      let xCount = 0;
+      for (let x = -x_start; x < width; x += boxWidth) {
         if (
-          y === -yInset ||
-          x === -xInset ||
+          y === -y_start ||
+          x === -x_start ||
           x + boxWidth > width ||
           y + boxHeight > height
         ) {
-          if (yOdd) {
-            if (xOdd) {
-              ctx.fillStyle = "#000000";
-            } else {
-              ctx.fillStyle = "#FFFFFF";
-            }
-          } else {
-            if (xOdd) {
-              ctx.fillStyle = "#FFFFFF";
-            } else {
-              ctx.fillStyle = "#000000";
-            }
-          }
+          ctx.fillStyle = edge_colours[(xCount + yCount) % 2];
         } else {
-          ctx.fillStyle = "#888888";
+          ctx.fillStyle = normal_colours[0];
         }
         ctx.beginPath();
         ctx.moveTo(x, y);
@@ -72,12 +65,598 @@ export default function Home() {
         ctx.lineTo(x + boxWidth - xMargin, y + boxHeight - yMargin);
         ctx.lineTo(x, y + boxHeight - yMargin);
         ctx.closePath();
-        //ctx.fillStyle = gradient1;
         ctx.fill();
-        xOdd == false ? (xOdd = true) : (xOdd = false);
+        xCount++;
       }
-      yOdd == false ? (yOdd = true) : (yOdd = false);
+      yCount++;
     }
+
+    // big boxes
+    const boxes: {
+      x: number;
+      y: number;
+      width: number;
+      height: number;
+      colour: string;
+    }[] = [
+      [
+        boxWidth * 3 - x_start,
+        boxHeight * 5 - y_start,
+        boxWidth * 2,
+        boxHeight * 2,
+        "#888888",
+      ],
+      [
+        boxWidth * 3 - x_start,
+        boxHeight * 8 - y_start,
+        boxWidth * 2,
+        boxHeight * 2,
+        "#888888",
+      ],
+      [
+        boxWidth * 23 - x_start,
+        boxHeight * 5 - y_start,
+        boxWidth * 2,
+        boxHeight * 2,
+        "#888888",
+      ],
+      [
+        boxWidth * 23 - x_start,
+        boxHeight * 8 - y_start,
+        boxWidth * 2,
+        boxHeight * 2,
+        "#888888",
+      ],
+      [
+        boxWidth * 6 - x_start,
+        boxHeight * 2 - y_start,
+        boxWidth,
+        boxHeight * 6,
+        "#13836C",
+      ],
+      [
+        boxWidth * 7 - x_start,
+        boxHeight * 2 - y_start,
+        boxWidth,
+        boxHeight * 2,
+        "#4D66A9",
+      ],
+      [
+        boxWidth * 6 - x_start,
+        boxHeight * 8 - y_start,
+        boxWidth,
+        boxHeight * 6,
+        "#B54E68",
+      ],
+      [
+        boxWidth * 7 - x_start,
+        boxHeight * 12 - y_start,
+        boxWidth,
+        boxHeight * 2,
+        "#927227",
+      ],
+      [
+        boxWidth * 20 - x_start,
+        boxHeight * 2 - y_start,
+        boxWidth,
+        boxHeight * 2,
+        "#4D66A9",
+      ],
+      [
+        boxWidth * 21 - x_start,
+        boxHeight * 2 - y_start,
+        boxWidth,
+        boxHeight * 6,
+        "#6A8328",
+      ],
+      [
+        boxWidth * 21 - x_start,
+        boxHeight * 8 - y_start,
+        boxWidth,
+        boxHeight * 6,
+        "#655A9D",
+      ],
+
+      [
+        boxWidth * 20 - x_start,
+        boxHeight * 12 - y_start,
+        boxWidth,
+        boxHeight * 2,
+        "#927227",
+      ],
+    ];
+
+    for (let index = 0; index < boxes.length; index++) {
+      let x = boxes[index][0];
+      let y = boxes[index][1];
+      let w = boxes[index][2];
+      let h = boxes[index][3];
+      ctx.fillStyle = boxes[index][4];
+      ctx.beginPath();
+      ctx.moveTo(x, y);
+      ctx.lineTo(x + w - xMargin, y);
+      ctx.lineTo(x + w - xMargin, y + h - yMargin);
+      ctx.lineTo(x, y + h - yMargin);
+      ctx.closePath();
+      ctx.fill();
+    }
+
+    const grills = [
+      [
+        boxWidth * 3 - x_start,
+        boxHeight * 5 - y_start + (boxHeight / 5) * 0,
+        boxWidth * 1,
+        boxHeight / 5,
+        "#000000",
+      ],
+      [
+        boxWidth * 3 - x_start,
+        boxHeight * 5 - y_start + (boxHeight / 5) * 1,
+        boxWidth * 1,
+        boxHeight / 5,
+        "#FFFFFF",
+      ],
+      [
+        boxWidth * 3 - x_start,
+        boxHeight * 5 - y_start + (boxHeight / 5) * 2,
+        boxWidth * 1,
+        boxHeight / 5,
+        "#000000",
+      ],
+      [
+        boxWidth * 3 - x_start,
+        boxHeight * 5 - y_start + (boxHeight / 5) * 3,
+        boxWidth * 1,
+        boxHeight / 5,
+        "#FFFFFF",
+      ],
+      [
+        boxWidth * 3 - x_start,
+        boxHeight * 5 - y_start + (boxHeight / 5) * 4,
+        boxWidth * 1,
+        boxHeight / 5,
+        "#000000",
+      ],
+    ];
+
+    for (let index = 0; index < grills.length; index++) {
+      let x = grills[index][0];
+      let y = grills[index][1];
+      let w = grills[index][2];
+      let h = grills[index][3];
+      ctx.fillStyle = grills[index][4];
+      ctx.beginPath();
+      ctx.moveTo(x, y);
+      ctx.lineTo(x + w, y);
+      ctx.lineTo(x + w, y + h);
+      ctx.lineTo(x, y + h);
+      ctx.closePath();
+      ctx.fill();
+    }
+
+    // circles
+    const circles = [
+      [boxWidth * 4 - x_start, boxHeight * 3 - y_start],
+      [boxWidth * 4 - x_start, boxHeight * 13 - y_start],
+      [boxWidth * 24 - x_start, boxHeight * 3 - y_start],
+      [boxWidth * 24 - x_start, boxHeight * 13 - y_start],
+    ];
+
+    for (let index = 0; index < circles.length; index++) {
+      let x = circles[index][0];
+      let y = circles[index][1];
+      ctx.fillStyle = "#000000";
+      ctx.strokeStyle = "#FFFFFF";
+      ctx.lineWidth = 15;
+      ctx.beginPath();
+      ctx.arc(x, y, boxHeight * 1.5, 0, 2 * Math.PI);
+      ctx.stroke();
+      ctx.fill();
+      ctx.closePath();
+
+      ctx.fillStyle = "#FFFFFF";
+      ctx.lineWidth = boxHeight;
+      ctx.beginPath();
+      ctx.arc(
+        x,
+        y,
+        boxHeight,
+        ((2 * Math.PI) / 8) * 0,
+        ((2 * Math.PI) / 8) * 1
+      );
+      ctx.stroke();
+      ctx.closePath();
+      // ctx.fillStyle = '#FF0000';
+      // ctx.lineWidth = (boxHeight);
+      // ctx.beginPath();
+      // ctx.arc(x, y, (boxHeight), ((2 * Math.PI) / 16) * 0, ((2 * Math.PI) / 16) * 2);
+      // ctx.stroke();
+      // ctx.closePath();
+
+      ctx.fillStyle = "#FFFFFF";
+      ctx.lineWidth = boxHeight;
+      ctx.beginPath();
+      ctx.arc(
+        x,
+        y,
+        boxHeight,
+        ((2 * Math.PI) / 8) * 2,
+        ((2 * Math.PI) / 8) * 3
+      );
+      ctx.stroke();
+      ctx.closePath();
+
+      ctx.fillStyle = "#FFFFFF";
+      ctx.lineWidth = boxHeight;
+      ctx.beginPath();
+      ctx.arc(
+        x,
+        y,
+        boxHeight,
+        ((2 * Math.PI) / 8) * 4,
+        ((2 * Math.PI) / 8) * 5
+      );
+      ctx.stroke();
+      ctx.closePath();
+
+      ctx.fillStyle = "#FFFFFF";
+      ctx.lineWidth = boxHeight;
+      ctx.beginPath();
+      ctx.arc(
+        x,
+        y,
+        boxHeight,
+        ((2 * Math.PI) / 8) * 6,
+        ((2 * Math.PI) / 8) * 7
+      );
+      ctx.stroke();
+      ctx.closePath();
+
+      /*ctx.beginPath();
+        ctx.arc(x, y, (boxHeight), ((2 * Math.PI) / 8) * 2, ((2 * Math.PI) / 8) * 1);
+        ctx.stroke();
+        ctx.closePath();*/
+
+      /*ctx.fillStyle = '#000000';
+        ctx.beginPath();
+        ctx.arc(x, y, (boxHeight), 0.125, 0.20 * Math.PI);
+        ctx.stroke();*/
+
+      ctx.fillStyle = "#000000";
+      ctx.beginPath();
+      ctx.lineWidth = 5;
+      ctx.arc(x, y, boxHeight * 0.5, 0, 2 * Math.PI);
+      ctx.stroke();
+      ctx.fill();
+      ctx.beginPath();
+      ctx.lineWidth = 5;
+      ctx.arc(x, y, boxHeight * 0.4, 0, 2 * Math.PI);
+      ctx.stroke();
+      ctx.fill();
+      ctx.beginPath();
+      ctx.lineWidth = 5;
+      ctx.arc(x, y, boxHeight * 0.3, 0, 2 * Math.PI);
+      ctx.stroke();
+      ctx.fill();
+      ctx.beginPath();
+      ctx.lineWidth = 5;
+      ctx.arc(x, y, boxHeight * 0.2, 0, 2 * Math.PI);
+      ctx.stroke();
+      ctx.fill();
+    }
+
+    // big circle
+    const inside = [
+      [
+        boxWidth * 8 - x_start,
+        boxHeight * 2 - y_start,
+        boxWidth * 12,
+        boxHeight * 2,
+        "#FFFFFF",
+      ],
+
+      [
+        boxWidth * 8 - x_start,
+        boxHeight * 4 - y_start,
+        boxWidth * 1,
+        boxHeight * 2,
+        "#AAAAAA",
+      ],
+      [
+        boxWidth * 9 - x_start,
+        boxHeight * 4 - y_start,
+        boxWidth * 1,
+        boxHeight * 2,
+        "#000000",
+      ],
+      [
+        boxWidth * 10 - x_start,
+        boxHeight * 4 - y_start,
+        boxWidth * 1,
+        boxHeight * 2,
+        "#AAAAAA",
+      ],
+      [
+        boxWidth * 11 - x_start,
+        boxHeight * 4 - y_start,
+        boxWidth * 1,
+        boxHeight * 2,
+        "#000000",
+      ],
+      [
+        boxWidth * 12 - x_start,
+        boxHeight * 4 - y_start,
+        boxWidth * 1,
+        boxHeight * 2,
+        "#AAAAAA",
+      ],
+      [
+        boxWidth * 13 - x_start,
+        boxHeight * 4 - y_start,
+        boxWidth * 1,
+        boxHeight * 2,
+        "#000000",
+      ],
+      [
+        boxWidth * 14 - x_start,
+        boxHeight * 4 - y_start,
+        boxWidth * 1,
+        boxHeight * 2,
+        "#AAAAAA",
+      ],
+      [
+        boxWidth * 15 - x_start,
+        boxHeight * 4 - y_start,
+        boxWidth * 1,
+        boxHeight * 2,
+        "#000000",
+      ],
+      [
+        boxWidth * 16 - x_start,
+        boxHeight * 4 - y_start,
+        boxWidth * 1,
+        boxHeight * 2,
+        "#AAAAAA",
+      ],
+      [
+        boxWidth * 17 - x_start,
+        boxHeight * 4 - y_start,
+        boxWidth * 1,
+        boxHeight * 2,
+        "#000000",
+      ],
+      [
+        boxWidth * 18 - x_start,
+        boxHeight * 4 - y_start,
+        boxWidth * 1,
+        boxHeight * 2,
+        "#AAAAAA",
+      ],
+      [
+        boxWidth * 19 - x_start,
+        boxHeight * 4 - y_start,
+        boxWidth * 1,
+        boxHeight * 2,
+        "#000000",
+      ],
+
+      [
+        boxWidth * 8 - x_start,
+        boxHeight * 5 - y_start,
+        boxWidth * 2,
+        boxHeight * 2,
+        "#B3B604",
+      ],
+      [
+        boxWidth * 10 - x_start,
+        boxHeight * 5 - y_start,
+        boxWidth * 2,
+        boxHeight * 2,
+        "#19B6B2",
+      ],
+      [
+        boxWidth * 12 - x_start,
+        boxHeight * 5 - y_start,
+        boxWidth * 2,
+        boxHeight * 2,
+        "#17B803",
+      ],
+      [
+        boxWidth * 14 - x_start,
+        boxHeight * 5 - y_start,
+        boxWidth * 2,
+        boxHeight * 2,
+        "#AF00B3",
+      ],
+      [
+        boxWidth * 16 - x_start,
+        boxHeight * 5 - y_start,
+        boxWidth * 2,
+        boxHeight * 2,
+        "#B10004",
+      ],
+      [
+        boxWidth * 18 - x_start,
+        boxHeight * 5 - y_start,
+        boxWidth * 2,
+        boxHeight * 2,
+        "#0900B2",
+      ],
+
+      [
+        boxWidth * 8 - x_start,
+        boxHeight * 7 - y_start,
+        boxWidth * 12,
+        boxHeight * 1,
+        "#000000",
+      ],
+
+      [
+        boxWidth * 8 - x_start,
+        boxHeight * 8 - y_start,
+        boxWidth * 2,
+        boxHeight * 2,
+        "#000000",
+      ],
+      [
+        boxWidth * 10 - x_start,
+        boxHeight * 8 - y_start,
+        boxWidth * 2,
+        boxHeight * 2,
+        "#888888",
+      ],
+      [
+        boxWidth * 12 - x_start,
+        boxHeight * 8 - y_start,
+        boxWidth * 2,
+        boxHeight * 2,
+        "#000000",
+      ],
+      [
+        boxWidth * 14 - x_start,
+        boxHeight * 8 - y_start,
+        boxWidth * 2,
+        boxHeight * 2,
+        "#888888",
+      ],
+      [
+        boxWidth * 16 - x_start,
+        boxHeight * 8 - y_start,
+        boxWidth * 2,
+        boxHeight * 2,
+        "#000000",
+      ],
+      [
+        boxWidth * 18 - x_start,
+        boxHeight * 8 - y_start,
+        boxWidth * 2,
+        boxHeight * 2,
+        "#888888",
+      ],
+
+      [
+        boxWidth * 8 - x_start,
+        boxHeight * 10 - y_start,
+        boxWidth * 2,
+        boxHeight * 1,
+        "#000000",
+      ],
+      [
+        boxWidth * 10 - x_start,
+        boxHeight * 10 - y_start,
+        boxWidth * 2,
+        boxHeight * 1,
+        "#333333",
+      ],
+      [
+        boxWidth * 12 - x_start,
+        boxHeight * 10 - y_start,
+        boxWidth * 2,
+        boxHeight * 1,
+        "#666666",
+      ],
+      [
+        boxWidth * 14 - x_start,
+        boxHeight * 10 - y_start,
+        boxWidth * 2,
+        boxHeight * 1,
+        "#999999",
+      ],
+      [
+        boxWidth * 16 - x_start,
+        boxHeight * 10 - y_start,
+        boxWidth * 2,
+        boxHeight * 1,
+        "#CCCCCC",
+      ],
+      [
+        boxWidth * 18 - x_start,
+        boxHeight * 10 - y_start,
+        boxWidth * 2,
+        boxHeight * 1,
+        "#FFFFFF",
+      ],
+
+      [
+        boxWidth * 8 - x_start,
+        boxHeight * 11 - y_start,
+        boxWidth * 11,
+        boxHeight * 1,
+        "#FFFFFF",
+      ],
+
+      [
+        boxWidth * 8 - x_start,
+        boxHeight * 12 - y_start,
+        boxWidth * 5,
+        boxHeight * 2,
+        "#B3B604",
+      ],
+      [
+        boxWidth * 13 - x_start,
+        boxHeight * 12 - y_start,
+        boxWidth * 2,
+        boxHeight * 2,
+        "#B10004",
+      ],
+      [
+        boxWidth * 15 - x_start,
+        boxHeight * 12 - y_start,
+        boxWidth * 5,
+        boxHeight * 2,
+        "#B3B604",
+      ],
+
+      [
+        boxWidth * 11.5 - x_start,
+        boxHeight * 2.5 - y_start,
+        boxWidth * 4.5,
+        boxHeight * 1.5,
+        "#000000",
+      ],
+      [
+        boxWidth * 11 - x_start,
+        boxHeight * 11 - y_start,
+        boxWidth * 5.5,
+        boxHeight * 1,
+        "#000000",
+      ],
+    ];
+
+    ctx.save();
+    ctx.beginPath();
+    ctx.arc(
+      width / 2,
+      height / 2,
+      height / 2 - boxHeight * 1.5,
+      0,
+      2 * Math.PI
+    );
+    ctx.clip();
+    for (let index = 0; index < inside.length; index++) {
+      let x = inside[index][0];
+      let y = inside[index][1];
+      let w = inside[index][2];
+      let h = inside[index][3];
+      ctx.fillStyle = inside[index][4];
+      ctx.beginPath();
+      ctx.moveTo(x, y);
+      ctx.lineTo(x + w, y);
+      ctx.lineTo(x + w, y + h);
+      ctx.lineTo(x, y + h);
+      ctx.closePath();
+      ctx.fill();
+    }
+
+    ctx.font = "50px Roboto Condensed";
+    ctx.fillStyle = "#FFFFFF";
+    ctx.textAlign = "center";
+    ctx.fillText("TRINT TEST", boxWidth * 13, boxHeight * 3.5 - y_start);
+    ctx.fillText(
+      `${width}*${height} 16:9`,
+      boxWidth * 13,
+      boxHeight * 11.75 - y_start
+    );
   };
 
   useEffect(() => {
@@ -165,8 +744,12 @@ export default function Home() {
                   width={canvasWidth}
                   height={canvasHeight}
                   style={canvarDisplaySize}
+                  className="shadow-2xl"
                   ref={canvasRef}
                 />
+              </div>
+              <div className="flex flex-row justify-center items-center">
+                Hello
               </div>
             </div>
             <div className="w-1/12 debug-border  bg-violet-700"></div>
