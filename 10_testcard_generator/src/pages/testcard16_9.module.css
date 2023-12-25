@@ -1,0 +1,15 @@
+
+
+.overlay {
+    background-color: #fff;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    font-family: sans-serif;
+    filter: invert(100%);
+    height: 100vh;
+    margin: 0;
+    background: linear-gradient(#000000, #000000)  no-repeat;
+
+}
+
