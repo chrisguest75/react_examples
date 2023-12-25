@@ -2,6 +2,14 @@
 
 Create a canvas exporter.  
 
+TODO:
+
+* Resizing canvas maintaing aspect ratio
+  * (600 / 1920) * 1080.
+  * width = 600, height = 337
+* Saving mulitple images
+* Toast appearing and fading out
+
 ## Install
 
 ```sh
