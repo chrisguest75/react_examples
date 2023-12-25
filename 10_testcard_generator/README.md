@@ -11,7 +11,6 @@ https://stackoverflow.com/questions/36862334/get-viewport-window-height-in-react
 https://github.com/chrisguest75/democrew_examples/blob/master/08_waves/index.html
 https://github.com/chrisguest75/react_examples/pull/7
 
-
 IDEAS:
 
 * Plot a waveform to be in time with audio
@@ -33,7 +32,6 @@ npm run dev
 ```
 
 Now click the hyperlink.  
- 
 
 ## How to run
 
@@ -53,7 +51,7 @@ npm run lint
 #npm run docker:build
 #npm run docker:run
 ```
- 
+
 ## Created
 
 ```sh
@@ -62,10 +60,11 @@ npx create-next-app --typescript 10_testcard_generator
 
 ## Resources
 
-https://medium.com/@pdx.lucasm/canvas-with-react-js-32e133c05258
+* Canvas with React.js [here](https://medium.com/@pdx.lucasm/canvas-with-react-js-32e133c05258)
 
-https://blog.openreplay.com/2d-sketches-with-react-and-the-canvas-api
 
-https://react-bootstrap.github.io/getting-started/introduction/
+Broken
 
-https://nextjs.org/learn/foundations/from-javascript-to-react/adding-interactivity-with-state
+* https://blog.openreplay.com/2d-sketches-with-react-and-the-canvas-api
+* https://react-bootstrap.github.io/getting-started/introduction/
+* https://nextjs.org/learn/foundations/from-javascript-to-react/adding-interactivity-with-state
