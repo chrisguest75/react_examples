@@ -53,6 +53,7 @@ open  ~/Downloads/canvas.png
 
 ```sh
 npx create-next-app --typescript 11_canvas_exporter
+npm i -D daisyui@latest
 ```
 
 ## Resources

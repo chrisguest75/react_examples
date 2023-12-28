@@ -7,8 +7,6 @@
 * Dashboard
 * Dockerise
 * Lambda
-
-
-
-https://daisyui.com/
-
+* Charts
+* https://daisyui.com/
+* https://flowbite.com/
