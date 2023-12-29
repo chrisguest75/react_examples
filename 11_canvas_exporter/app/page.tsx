@@ -80,77 +80,77 @@ export default function Home() {
       colour: string;
     }[] = [
       [
-        boxWidth * 3 - x_start,
+        boxWidth * 2 - x_start,
         boxHeight * 5 - y_start,
         boxWidth * 2,
         boxHeight * 2,
         "#888888",
       ],
       [
-        boxWidth * 3 - x_start,
+        boxWidth * 2 - x_start,
         boxHeight * 8 - y_start,
         boxWidth * 2,
         boxHeight * 2,
         "#888888",
       ],
       [
-        boxWidth * 23 - x_start,
+        boxWidth * (boxes_x - 4) + x_start,
         boxHeight * 5 - y_start,
         boxWidth * 2,
         boxHeight * 2,
         "#888888",
       ],
       [
-        boxWidth * 23 - x_start,
+        boxWidth * (boxes_x - 4) + x_start,
         boxHeight * 8 - y_start,
         boxWidth * 2,
         boxHeight * 2,
         "#888888",
       ],
       [
-        boxWidth * 6 - x_start,
+        boxWidth * 5 - x_start,
         boxHeight * 2 - y_start,
         boxWidth,
         boxHeight * 6,
         "#13836C",
       ],
       [
-        boxWidth * 7 - x_start,
+        boxWidth * 6 - x_start,
         boxHeight * 2 - y_start,
         boxWidth,
         boxHeight * 2,
         "#4D66A9",
       ],
       [
-        boxWidth * 6 - x_start,
+        boxWidth * 5 - x_start,
         boxHeight * 8 - y_start,
         boxWidth,
         boxHeight * 6,
         "#B54E68",
       ],
       [
-        boxWidth * 7 - x_start,
+        boxWidth * 6 - x_start,
         boxHeight * 12 - y_start,
         boxWidth,
         boxHeight * 2,
         "#927227",
       ],
       [
-        boxWidth * 20 - x_start,
+        boxWidth * (boxes_x - 7) + x_start,
         boxHeight * 2 - y_start,
         boxWidth,
         boxHeight * 2,
         "#4D66A9",
       ],
       [
-        boxWidth * 21 - x_start,
+        boxWidth * (boxes_x - 6) + x_start,
         boxHeight * 2 - y_start,
         boxWidth,
         boxHeight * 6,
         "#6A8328",
       ],
       [
-        boxWidth * 21 - x_start,
+        boxWidth * (boxes_x - 6) + x_start,
         boxHeight * 8 - y_start,
         boxWidth,
         boxHeight * 6,
@@ -158,7 +158,7 @@ export default function Home() {
       ],
 
       [
-        boxWidth * 20 - x_start,
+        boxWidth * (boxes_x - 7) + x_start,
         boxHeight * 12 - y_start,
         boxWidth,
         boxHeight * 2,
@@ -236,10 +236,10 @@ export default function Home() {
 
     // circles
     const circles = [
-      [boxWidth * 4 - x_start, boxHeight * 3 - y_start],
-      [boxWidth * 4 - x_start, boxHeight * 13 - y_start],
-      [boxWidth * 24 - x_start, boxHeight * 3 - y_start],
-      [boxWidth * 24 - x_start, boxHeight * 13 - y_start],
+      [boxWidth * 3 - x_start, boxHeight * 3 - y_start],
+      [boxWidth * 3 - x_start, boxHeight * 13 - y_start],
+      [boxWidth * (boxes_x - 3) + x_start, boxHeight * 3 - y_start],
+      [boxWidth * (boxes_x - 3) + x_start, boxHeight * 13 - y_start],
     ];
 
     for (let index = 0; index < circles.length; index++) {
@@ -625,13 +625,7 @@ export default function Home() {
 
     ctx.save();
     ctx.beginPath();
-    ctx.arc(
-      width / 2,
-      height / 2,
-      height / 2 - boxHeight * 1.5,
-      0,
-      2 * Math.PI
-    );
+    ctx.arc(width / 2, height / 2, (boxHeight * 12) / 2, 0, 2 * Math.PI);
     ctx.clip();
     for (let index = 0; index < inside.length; index++) {
       let x = inside[index][0];
@@ -651,10 +645,10 @@ export default function Home() {
     ctx.font = "50px Roboto Condensed";
     ctx.fillStyle = "#FFFFFF";
     ctx.textAlign = "center";
-    ctx.fillText("TRINT TEST", boxWidth * 13, boxHeight * 3.5 - y_start);
+    ctx.fillText("TRINT TEST", boxWidth * 13.5, boxHeight * 3.5 - y_start);
     ctx.fillText(
       `${width}*${height} 16:9`,
-      boxWidth * 13,
+      boxWidth * 13.5,
       boxHeight * 11.75 - y_start
     );
   };
