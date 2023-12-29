@@ -5,9 +5,9 @@ Create a canvas exporter.
 TODO:
 
 * Save video of canvas
-* Resizing canvas maintaing aspect ratio
-  * (600 / 1920) * 1080.
-  * width = 600, height = 337
+* Modal dialog
+* width of menu items
+* Fix 9:16 render
 * Saving mulitple images
 * Toast appearing and fading out
 

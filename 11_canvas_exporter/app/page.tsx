@@ -15,10 +15,16 @@ export default function Home() {
   const canvasWidth = size.width;
   const canvasHeight = size.height;
   const aspectRatio = size.ratio;
-  const canvarDisplaySize = {
-    width: `800px`,
-    height: `${(800 / size.width) * size.height}px`,
-  };
+  const canvarDisplaySize =
+    size.width > size.height
+      ? {
+          width: `800px`,
+          height: `${(800 / size.width) * size.height}px`,
+        }
+      : {
+          width: `400px`,
+          height: `${(400 / size.width) * size.height}px`,
+        };
 
   // const canvarDisplaySize = {
   //   width: `600px`,
@@ -675,7 +681,7 @@ export default function Home() {
     const canvas = canvasRef.current;
     const link = document.createElement("a");
     link.href = canvas.toDataURL("image/png");
-    link.download = "canvas.png";
+    link.download = `canvas_${canvasWidth}x${canvasHeight}.png`;
     link.click();
   };
 
@@ -703,7 +709,14 @@ export default function Home() {
           <div className="flex-none">
             <ul className="menu menu-horizontal px-2">
               <li>
-                <a onClick={handleButtonClick}>Export</a>
+                <details>
+                  <summary>Exports</summary>
+                  <ul className="p-1 bg-neutral rounded-t-none">
+                    <li>
+                      <a onClick={handleButtonClick}>Save PNG</a>
+                    </li>
+                  </ul>
+                </details>
               </li>
               <li>
                 <details>
