@@ -685,6 +685,12 @@ export default function Home() {
     link.click();
   };
 
+  const aboutClick = () => {
+    // Add your logic here for the button click
+    console.log("About clicked!");
+    document.getElementById("my_modal_2").showModal();
+  };
+
   const handleResizeCanvas = (width: number, height: number, ratio: string) => {
     console.log("Resize clicked!");
 
@@ -706,7 +712,7 @@ export default function Home() {
               Testcard Generator
             </a>
           </div>
-          <div className="flex-none">
+          <div className="flex-none text-nowrap">
             <ul className="menu menu-horizontal px-2">
               <li>
                 <details>
@@ -745,35 +751,14 @@ export default function Home() {
                   </ul>
                 </details>
               </li>
+              <li>
+                <a onClick={aboutClick}>About</a>
+              </li>
             </ul>
           </div>
         </div>
         <div className="flex flex-grow h-[10vh] bg-violet-700">
-          <div className="flex">
-            <p className="font-sans">
-              Test cards play a crucial role in evaluating and optimizing
-              software encoding pipelines, which are essential for converting
-              raw video feeds into digital formats suitable for broadcast. These
-              test cards, with their well-defined patterns and colors, provide a
-              standardized reference to ensure that the encoding process
-              accurately captures and transmits visual details and color
-              fidelity. This is particularly important in a digital broadcast
-              environment, where the quality of the encoding directly impacts
-              the viewer's experience.
-            </p>
-            <p className="font-sans">
-              Using test cards in software encoding pipelines allows engineers
-              to methodically test and calibrate various aspects of the video
-              processing chain. This includes checking compression algorithms,
-              verifying color grading, ensuring proper aspect ratio handling,
-              and assessing resolution scaling. The consistent use of test cards
-              helps in identifying any discrepancies or faults in the encoding
-              process, enabling technicians to fine-tune the software for
-              optimal performance. This not only enhances the quality of the
-              broadcast but also ensures reliability and efficiency in the
-              processing and transmission of digital video content.
-            </p>
-          </div>
+          <div className="flex"></div>
         </div>
         <div className="flex flex-grow">
           <div className="flex flex-row flex-grow h-[70vh]">
@@ -806,6 +791,36 @@ export default function Home() {
           </nav>
         </footer>
       </div>
+      <dialog id="my_modal_2" className="modal">
+        <div className="modal-box text-slate-700">
+          <h3 className="font-bold text-lg">About</h3>
+          <p className="font-sans py-4">
+            Test cards play a crucial role in evaluating and optimizing software
+            encoding pipelines, which are essential for converting raw video
+            feeds into digital formats suitable for broadcast. These test cards,
+            with their well-defined patterns and colors, provide a standardized
+            reference to ensure that the encoding process accurately captures
+            and transmits visual details and color fidelity. This is
+            particularly important in a digital broadcast environment, where the
+            quality of the encoding directly impacts the viewer's experience.
+          </p>
+          <p className="font-sans py-4">
+            Using test cards in software encoding pipelines allows engineers to
+            methodically test and calibrate various aspects of the video
+            processing chain. This includes checking compression algorithms,
+            verifying color grading, ensuring proper aspect ratio handling, and
+            assessing resolution scaling. The consistent use of test cards helps
+            in identifying any discrepancies or faults in the encoding process,
+            enabling technicians to fine-tune the software for optimal
+            performance. This not only enhances the quality of the broadcast but
+            also ensures reliability and efficiency in the processing and
+            transmission of digital video content.
+          </p>
+        </div>
+        <form method="dialog" className="modal-backdrop">
+          <button>close</button>
+        </form>
+      </dialog>
     </main>
   );
 }

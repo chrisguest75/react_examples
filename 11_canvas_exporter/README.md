@@ -5,7 +5,6 @@ Create a canvas exporter.
 TODO:
 
 * Save video of canvas
-* Modal dialog
 * width of menu items
 * Fix 9:16 render
 * Saving mulitple images
