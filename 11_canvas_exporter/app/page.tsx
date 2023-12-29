@@ -716,9 +716,9 @@ export default function Home() {
             <ul className="menu menu-horizontal px-2">
               <li>
                 <details>
-                  <summary>Exports</summary>
+                  <summary className="hover:text-indigo-400">Exports</summary>
                   <ul className="p-1 bg-neutral rounded-t-none">
-                    <li>
+                    <li className="hover:text-indigo-400">
                       <a onClick={handleButtonClick}>Save PNG</a>
                     </li>
                   </ul>
@@ -726,24 +726,26 @@ export default function Home() {
               </li>
               <li>
                 <details>
-                  <summary>Resolutions</summary>
+                  <summary className="hover:text-indigo-400">
+                    Resolutions
+                  </summary>
                   <ul className="p-1 bg-neutral rounded-t-none">
-                    <li>
+                    <li className="hover:text-indigo-400">
                       <a onClick={() => handleResizeCanvas(1920, 1080, "16:9")}>
                         1920x1080 16:9
                       </a>
                     </li>
-                    <li>
+                    <li className="hover:text-indigo-400">
                       <a onClick={() => handleResizeCanvas(1440, 1080, "4:3")}>
                         1440x1080 4:3
                       </a>
                     </li>
-                    <li>
+                    <li className="hover:text-indigo-400">
                       <a onClick={() => handleResizeCanvas(1350, 1080, "5:4")}>
                         1350x1080 5:4
                       </a>
                     </li>
-                    <li>
+                    <li className="hover:text-indigo-400">
                       <a onClick={() => handleResizeCanvas(1080, 1920, "9:16")}>
                         1080x1920 9:16
                       </a>
@@ -751,7 +753,7 @@ export default function Home() {
                   </ul>
                 </details>
               </li>
-              <li>
+              <li className="hover:text-indigo-400">
                 <a onClick={aboutClick}>About</a>
               </li>
             </ul>

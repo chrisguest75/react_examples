@@ -62,8 +62,9 @@ npm install --save-dev @types/three
 
 ### Tailwind
 
+* Get started with Tailwind CSS [here](https://tailwindcss.com/docs/installation)
 * A guide to adding gradients with Tailwind CSS [here](https://blog.logrocket.com/guide-adding-gradients-tailwind-css)  
-* https://hypercolor.dev/
+* A curated collection of beautiful Tailwind CSS gradients using the full range of Tailwind CSS colors. Easily copy and paste the class names, CSS or even save the gradients as an image. [here](https://hypercolor.dev/)
 
 ### React-Fiber
 
