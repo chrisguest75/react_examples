@@ -15,21 +15,32 @@ function Box(props) {
 
   // Subscribe this component to the render-loop, rotate the mesh every frame
   useFrame((state, delta) => {
-    ref.current.rotation.x += delta;
-    ref.current.rotation.y += delta;
-    if (clicked) {
+    if (props.rotations.x) {
+      ref.current.rotation.x += delta;
+    }
+    if (props.rotations.y) {
+      ref.current.rotation.y += delta;
+    }
+    if (props.rotations.z) {
       ref.current.rotation.z += delta;
     }
   });
 
-  let mesh = <boxGeometry args={[1, 1, 1, 5, 5, 5]} />;
-  if (clicked) {
-    mesh = <dodecahedronGeometry args={[1, 1]} />;
+  let mesh = <boxGeometry args={[1.5, 1.5, 1.5, 5, 5, 5]} />;
+  switch (props.geometry) {
+    case "sphere":
+      mesh = <sphereGeometry args={[1, 8, 8]} />;
+      break;
+    case "dodecahedron":
+      mesh = <dodecahedronGeometry args={[1, 2]} />;
+      break;
+    default:
+      break;
   }
   // Return the view, these are regular Threejs elements expressed in JSX
   return (
     <mesh
-      {...props}
+      position={props.position}
       ref={ref}
       scale={2}
       onClick={(event) => click(!clicked)}
@@ -37,13 +48,42 @@ function Box(props) {
       onPointerOut={(event) => hover(false)}
     >
       {mesh}
-      <meshStandardMaterial flatShading color={hovered ? 0x606060 : 0x404040} />
+      <meshStandardMaterial
+        flatShading
+        color={hovered ? props.highlight : props.color}
+      />
     </mesh>
   );
 }
 
 export default function Home() {
-  const { name, aNumber } = useControls({ name: "World", aNumber: 0 });
+  const canvasRef = useRef(null);
+
+  const [{ xrotation, yrotation, zrotation, color, highlightColor, geometry }] =
+    useControls(() => ({
+      geometry: { value: "cube", options: ["sphere", "dodecahedron"] },
+      color: {
+        value: "#0d00ff",
+        label: "color",
+      },
+      highlightColor: {
+        value: "#0ca80c",
+        label: "highlight",
+      },
+      xrotation: true,
+      yrotation: true,
+      zrotation: true,
+    }));
+
+  const handleButtonClick = () => {
+    // Add your logic here for the button click
+    console.log("Export clicked!");
+    const canvas = canvasRef.current;
+    const link = document.createElement("a");
+    link.href = canvas.toDataURL("image/png");
+    link.download = "canvas.png";
+    link.click();
+  };
 
   return (
     <main className="w-[100vw] h-[100vh]">
@@ -52,19 +92,43 @@ export default function Home() {
           <div className="flex-1">
             <a className="btn btn-ghost text-xl uppercase">ThreeJS Fiber</a>
           </div>
+          <div className="flex-none">
+            <ul className="menu menu-horizontal px-2">
+              <li>
+                <a onClick={handleButtonClick}>Export</a>
+              </li>
+            </ul>
+          </div>
         </div>
         <div className="flex flex-grow">
           <div className="flex flex-row flex-grow h-[90vh] bg-gradient-to-b from-slate-800 to-slate-900">
-            <Canvas>
+            <Canvas
+              ref={canvasRef}
+              gl={{ alpha: true, antialias: true, preserveDrawingBuffer: true }}
+            >
               <hemisphereLight
                 skyColor={0xffffff}
                 groundColor={0x000000}
                 intensity={10.2}
               />
-              <ambientLight color={0x204040} intensity={10.2} />
+              <ambientLight color={0x204040} intensity={5.2} />
 
-              <Box position={[0, 0, 0]} />
-              <OrbitControls />
+              <Box
+                position={[0, 0, 0]}
+                geometry={geometry}
+                color={color}
+                highlight={highlightColor}
+                rotations={{ x: xrotation, y: yrotation, z: zrotation }}
+              />
+              <OrbitControls
+                enablePan={false}
+                minPolarAngle={1.5}
+                maxPolarAngle={1.5}
+                minDistance={5}
+                maxDistance={10}
+                enableZoom={true}
+                //autoRotate={rotate}
+              />
             </Canvas>
           </div>
         </div>
