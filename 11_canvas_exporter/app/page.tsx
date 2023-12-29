@@ -6,6 +6,8 @@ import React, { useRef, useEffect, useState } from "react";
 export default function Home() {
   const canvasRef = useRef(null);
   const [size, setSize] = useState({ width: 1920, height: 1080 });
+  const [frame, setFrame] = useState(0);
+
   const canvasWidth = size.width;
   const canvasHeight = size.height;
   const canvarDisplaySize = {
@@ -651,6 +653,9 @@ export default function Home() {
       width / 2,
       boxHeight * 11.75 - y_start
     );
+
+    ctx.fillText(`FRAME:${frame}`, width / 2, height / 2 - y_start / 2);
+    setFrame(frame + 1);
   };
 
   useEffect(() => {
