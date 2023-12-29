@@ -101,7 +101,7 @@ export default function Home() {
       ],
       [
         boxWidth * 2 - x_start,
-        boxHeight * 8 - y_start,
+        boxHeight * (boxes_y - 7) + y_start,
         boxWidth * 2,
         boxHeight * 2,
         "#888888",
@@ -115,7 +115,7 @@ export default function Home() {
       ],
       [
         boxWidth * (boxes_x - 4) + x_start,
-        boxHeight * 8 - y_start,
+        boxHeight * (boxes_y - 7) + y_start,
         boxWidth * 2,
         boxHeight * 2,
         "#888888",
@@ -136,14 +136,14 @@ export default function Home() {
       ],
       [
         boxWidth * 5 - x_start,
-        boxHeight * 8 - y_start,
+        boxHeight * (boxes_y - 8) + y_start,
         boxWidth,
         boxHeight * 6,
         "#B54E68",
       ],
       [
         boxWidth * 6 - x_start,
-        boxHeight * 12 - y_start,
+        boxHeight * (boxes_y - 4) + y_start,
         boxWidth,
         boxHeight * 2,
         "#927227",
@@ -164,7 +164,7 @@ export default function Home() {
       ],
       [
         boxWidth * (boxes_x - 6) + x_start,
-        boxHeight * 8 - y_start,
+        boxHeight * (boxes_y - 8) + y_start,
         boxWidth,
         boxHeight * 6,
         "#655A9D",
@@ -172,7 +172,7 @@ export default function Home() {
 
       [
         boxWidth * (boxes_x - 7) + x_start,
-        boxHeight * 12 - y_start,
+        boxHeight * (boxes_y - 4) + y_start,
         boxWidth,
         boxHeight * 2,
         "#927227",
@@ -250,9 +250,9 @@ export default function Home() {
     // circles
     const circles = [
       [boxWidth * 3 - x_start, boxHeight * 3 - y_start],
-      [boxWidth * 3 - x_start, boxHeight * 13 - y_start],
+      [boxWidth * 3 - x_start, boxHeight * (boxes_y - 3) + y_start],
       [boxWidth * (boxes_x - 3) + x_start, boxHeight * 3 - y_start],
-      [boxWidth * (boxes_x - 3) + x_start, boxHeight * 13 - y_start],
+      [boxWidth * (boxes_x - 3) + x_start, boxHeight * (boxes_y - 3) + y_start],
     ];
 
     for (let index = 0; index < circles.length; index++) {
@@ -362,7 +362,7 @@ export default function Home() {
     const inside = [
       [
         width / 2 - boxWidth * 6,
-        boxHeight * 2 - y_start,
+        height / 2 - boxHeight * 6,
         boxWidth * 12,
         boxHeight * 2,
         "#FFFFFF",
@@ -370,84 +370,84 @@ export default function Home() {
 
       [
         width / 2 - boxWidth * 6,
-        boxHeight * 4 - y_start,
+        height / 2 - boxHeight * 4,
         boxWidth * 1,
         boxHeight * 2,
         "#AAAAAA",
       ],
       [
         width / 2 - boxWidth * 5,
-        boxHeight * 4 - y_start,
+        height / 2 - boxHeight * 4,
         boxWidth * 1,
         boxHeight * 2,
         "#000000",
       ],
       [
         width / 2 - boxWidth * 4,
-        boxHeight * 4 - y_start,
+        height / 2 - boxHeight * 4,
         boxWidth * 1,
         boxHeight * 2,
         "#AAAAAA",
       ],
       [
         width / 2 - boxWidth * 3,
-        boxHeight * 4 - y_start,
+        height / 2 - boxHeight * 4,
         boxWidth * 1,
         boxHeight * 2,
         "#000000",
       ],
       [
         width / 2 - boxWidth * 2,
-        boxHeight * 4 - y_start,
+        height / 2 - boxHeight * 4,
         boxWidth * 1,
         boxHeight * 2,
         "#AAAAAA",
       ],
       [
         width / 2 - boxWidth * 1,
-        boxHeight * 4 - y_start,
+        height / 2 - boxHeight * 4,
         boxWidth * 1,
         boxHeight * 2,
         "#000000",
       ],
       [
         width / 2 + boxWidth * 0,
-        boxHeight * 4 - y_start,
+        height / 2 - boxHeight * 4,
         boxWidth * 1,
         boxHeight * 2,
         "#AAAAAA",
       ],
       [
         width / 2 + boxWidth * 1,
-        boxHeight * 4 - y_start,
+        height / 2 - boxHeight * 4,
         boxWidth * 1,
         boxHeight * 2,
         "#000000",
       ],
       [
         width / 2 + boxWidth * 2,
-        boxHeight * 4 - y_start,
+        height / 2 - boxHeight * 4,
         boxWidth * 1,
         boxHeight * 2,
         "#AAAAAA",
       ],
       [
         width / 2 + boxWidth * 3,
-        boxHeight * 4 - y_start,
+        height / 2 - boxHeight * 4,
         boxWidth * 1,
         boxHeight * 2,
         "#000000",
       ],
       [
         width / 2 + boxWidth * 4,
-        boxHeight * 4 - y_start,
+        height / 2 - boxHeight * 4,
         boxWidth * 1,
         boxHeight * 2,
         "#AAAAAA",
       ],
       [
         width / 2 + boxWidth * 5,
-        boxHeight * 4 - y_start,
+        height / 2 - boxHeight * 4,
         boxWidth * 1,
         boxHeight * 2,
         "#000000",
@@ -455,42 +455,42 @@ export default function Home() {
 
       [
         width / 2 - boxWidth * 6,
-        boxHeight * 5 - y_start,
+        height / 2 - boxHeight * 2,
         boxWidth * 2,
         boxHeight * 2,
         "#B3B604",
       ],
       [
         width / 2 - boxWidth * 4,
-        boxHeight * 5 - y_start,
+        height / 2 - boxHeight * 2,
         boxWidth * 2,
         boxHeight * 2,
         "#19B6B2",
       ],
       [
         width / 2 - boxWidth * 2,
-        boxHeight * 5 - y_start,
+        height / 2 - boxHeight * 2,
         boxWidth * 2,
         boxHeight * 2,
         "#17B803",
       ],
       [
         width / 2 + boxWidth * 0,
-        boxHeight * 5 - y_start,
+        height / 2 - boxHeight * 2,
         boxWidth * 2,
         boxHeight * 2,
         "#AF00B3",
       ],
       [
         width / 2 + boxWidth * 2,
-        boxHeight * 5 - y_start,
+        height / 2 - boxHeight * 2,
         boxWidth * 2,
         boxHeight * 2,
         "#B10004",
       ],
       [
         width / 2 + boxWidth * 4,
-        boxHeight * 5 - y_start,
+        height / 2 - boxHeight * 2,
         boxWidth * 2,
         boxHeight * 2,
         "#0900B2",
@@ -498,7 +498,7 @@ export default function Home() {
 
       [
         width / 2 - boxWidth * 6,
-        boxHeight * 7 - y_start,
+        height / 2 + boxHeight * 0,
         boxWidth * 12,
         boxHeight * 1,
         "#000000",
@@ -506,42 +506,42 @@ export default function Home() {
 
       [
         width / 2 - boxWidth * 6,
-        boxHeight * 8 - y_start,
+        height / 2 + boxHeight * 1,
         boxWidth * 2,
         boxHeight * 2,
         "#000000",
       ],
       [
         width / 2 - boxWidth * 4,
-        boxHeight * 8 - y_start,
+        height / 2 + boxHeight * 1,
         boxWidth * 2,
         boxHeight * 2,
         "#888888",
       ],
       [
         width / 2 - boxWidth * 2,
-        boxHeight * 8 - y_start,
+        height / 2 + boxHeight * 1,
         boxWidth * 2,
         boxHeight * 2,
         "#000000",
       ],
       [
         width / 2 + boxWidth * 0,
-        boxHeight * 8 - y_start,
+        height / 2 + boxHeight * 1,
         boxWidth * 2,
         boxHeight * 2,
         "#888888",
       ],
       [
         width / 2 + boxWidth * 2,
-        boxHeight * 8 - y_start,
+        height / 2 + boxHeight * 1,
         boxWidth * 2,
         boxHeight * 2,
         "#000000",
       ],
       [
         width / 2 + boxWidth * 4,
-        boxHeight * 8 - y_start,
+        height / 2 + boxHeight * 1,
         boxWidth * 2,
         boxHeight * 2,
         "#888888",
@@ -549,42 +549,42 @@ export default function Home() {
 
       [
         width / 2 - boxWidth * 6,
-        boxHeight * 10 - y_start,
+        height / 2 + boxHeight * 2,
         boxWidth * 2,
         boxHeight * 1,
         "#000000",
       ],
       [
         width / 2 - boxWidth * 4,
-        boxHeight * 10 - y_start,
+        height / 2 + boxHeight * 2,
         boxWidth * 2,
         boxHeight * 1,
         "#333333",
       ],
       [
         width / 2 - boxWidth * 2,
-        boxHeight * 10 - y_start,
+        height / 2 + boxHeight * 2,
         boxWidth * 2,
         boxHeight * 1,
         "#666666",
       ],
       [
         width / 2 + boxWidth * 0,
-        boxHeight * 10 - y_start,
+        height / 2 + boxHeight * 2,
         boxWidth * 2,
         boxHeight * 1,
         "#999999",
       ],
       [
         width / 2 + boxWidth * 2,
-        boxHeight * 10 - y_start,
+        height / 2 + boxHeight * 2,
         boxWidth * 2,
         boxHeight * 1,
         "#CCCCCC",
       ],
       [
         width / 2 + boxWidth * 4,
-        boxHeight * 10 - y_start,
+        height / 2 + boxHeight * 2,
         boxWidth * 2,
         boxHeight * 1,
         "#FFFFFF",
@@ -592,7 +592,7 @@ export default function Home() {
 
       [
         width / 2 - boxWidth * 6,
-        boxHeight * 11 - y_start,
+        height / 2 + boxHeight * 3,
         boxWidth * 11,
         boxHeight * 1,
         "#FFFFFF",
@@ -600,21 +600,21 @@ export default function Home() {
 
       [
         width / 2 - boxWidth * 6,
-        boxHeight * 12 - y_start,
+        height / 2 + boxHeight * 4,
         boxWidth * 5,
         boxHeight * 2,
         "#B3B604",
       ],
       [
         width / 2 - boxWidth * 2,
-        boxHeight * 12 - y_start,
+        height / 2 + boxHeight * 4,
         boxWidth * 2,
         boxHeight * 2,
         "#B10004",
       ],
       [
         width / 2 + boxWidth * 0,
-        boxHeight * 12 - y_start,
+        height / 2 + boxHeight * 4,
         boxWidth * 5,
         boxHeight * 2,
         "#B3B604",
@@ -622,14 +622,14 @@ export default function Home() {
 
       [
         width / 2 - boxWidth * 2.5,
-        boxHeight * 2.5 - y_start,
+        height / 2 - boxHeight * 5.5,
         boxWidth * 5,
         boxHeight * 1.5,
         "#000000",
       ],
       [
         width / 2 - boxWidth * 2.5,
-        boxHeight * 11 - y_start,
+        height / 2 + boxHeight * 3,
         boxWidth * 5.5,
         boxHeight * 1,
         "#000000",
@@ -658,14 +658,14 @@ export default function Home() {
     ctx.font = "60px Roboto, sans-serif";
     ctx.fillStyle = "#FFFFFF";
     ctx.textAlign = "center";
-    ctx.fillText("TRINT TEST", width / 2, boxHeight * 3.5 - y_start);
+    ctx.fillText("TRINT TEST", width / 2, height / 2 - boxHeight * 4.5);
     ctx.fillText(
       `   ${width}*${height} ${aspectRatio}`,
       width / 2,
-      boxHeight * 11.75 - y_start
+      height / 2 + boxHeight * 3.75
     );
 
-    ctx.fillText(`FRAME:${frame}`, width / 2, height / 2 - y_start / 2);
+    ctx.fillText(`FRAME:${frame}`, width / 2, height / 2 + boxHeight * 0.75);
     setFrame(frame + 1);
   };
 

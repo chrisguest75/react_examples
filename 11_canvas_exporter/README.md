@@ -6,7 +6,8 @@ TODO:
 
 * Save video of canvas
 * width of menu items
-* Fix 9:16 render
+* resizing correctly
+* rotating circles
 * Saving mulitple images
 * Toast appearing and fading out
 
