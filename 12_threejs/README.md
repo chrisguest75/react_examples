@@ -43,6 +43,8 @@ npm run lint
 
 ## Created
 
+NOTE: "use client"; must be added to the pages.  
+
 ```sh
 npx create-next-app --typescript 12_threejs
 #npm i -D daisyui@latest
