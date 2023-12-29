@@ -4,6 +4,7 @@ Create a canvas exporter.
 
 TODO:
 
+* Save video of canvas
 * Resizing canvas maintaing aspect ratio
   * (600 / 1920) * 1080.
   * width = 600, height = 337
@@ -43,7 +44,6 @@ npm run lint
 #npm run docker:build
 #npm run docker:run
 
-
 # give info on image
 file ~/Downloads/canvas.png
 open  ~/Downloads/canvas.png
@@ -62,11 +62,7 @@ npm i -D daisyui@latest
 
 * Canvas with React.js [here](https://medium.com/@pdx.lucasm/canvas-with-react-js-32e133c05258)
 * The most popular component library for Tailwind CSS [here](https://daisyui.com/)  
-
-* https://github.com/joschan21/canvas-drawing-app
-
-* https://julien-decharentenay.medium.com/how-to-save-html-canvas-animation-as-a-video-421157c2203b
-
-* https://ninza7.medium.com/i-built-a-whiteboard-canvas-drawing-app-using-next-js-and-react-7eb0a1a490ba
-
-* https://borstch.com/blog/development/integrating-tailwind-css-with-nextjs-14
+* joschan21/canvas-drawing-app repo [here](https://github.com/joschan21/canvas-drawing-app)
+* How to save html canvas animation as a video [here](https://julien-decharentenay.medium.com/how-to-save-html-canvas-animation-as-a-video-421157c2203b)
+* I Built a Whiteboard Canvas Drawing App Using Next.js and React [here](https://ninza7.medium.com/i-built-a-whiteboard-canvas-drawing-app-using-next-js-and-react-7eb0a1a490ba)
+* Integrating Tailwind CSS with Next.js 14 [here](https://borstch.com/blog/development/integrating-tailwind-css-with-nextjs-14)

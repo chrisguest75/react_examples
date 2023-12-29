@@ -5,11 +5,16 @@ import React, { useRef, useEffect, useState } from "react";
 
 export default function Home() {
   const canvasRef = useRef(null);
-  const [size, setSize] = useState({ width: 1920, height: 1080 });
+  const [size, setSize] = useState({
+    width: 1920,
+    height: 1080,
+    ratio: "16:9",
+  });
   const [frame, setFrame] = useState(0);
 
   const canvasWidth = size.width;
   const canvasHeight = size.height;
+  const aspectRatio = size.ratio;
   const canvarDisplaySize = {
     width: `800px`,
     height: `${(800 / size.width) * size.height}px`,
@@ -644,12 +649,12 @@ export default function Home() {
       ctx.fill();
     }
 
-    ctx.font = "50px Roboto Condensed";
+    ctx.font = "60px Roboto, sans-serif";
     ctx.fillStyle = "#FFFFFF";
     ctx.textAlign = "center";
     ctx.fillText("TRINT TEST", width / 2, boxHeight * 3.5 - y_start);
     ctx.fillText(
-      `${width}*${height} 16:9`,
+      `   ${width}*${height} ${aspectRatio}`,
       width / 2,
       boxHeight * 11.75 - y_start
     );
@@ -674,10 +679,10 @@ export default function Home() {
     link.click();
   };
 
-  const handleResizeCanvas = (width: number, height: number) => {
+  const handleResizeCanvas = (width: number, height: number, ratio: string) => {
     console.log("Resize clicked!");
 
-    setSize({ width: width, height: height });
+    setSize({ width: width, height: height, ratio: ratio });
   };
 
   return (
@@ -705,22 +710,22 @@ export default function Home() {
                   <summary>Resolutions</summary>
                   <ul className="p-1 bg-neutral rounded-t-none">
                     <li>
-                      <a onClick={() => handleResizeCanvas(1920, 1080)}>
+                      <a onClick={() => handleResizeCanvas(1920, 1080, "16:9")}>
                         1920x1080 16:9
                       </a>
                     </li>
                     <li>
-                      <a onClick={() => handleResizeCanvas(1440, 1080)}>
+                      <a onClick={() => handleResizeCanvas(1440, 1080, "4:3")}>
                         1440x1080 4:3
                       </a>
                     </li>
                     <li>
-                      <a onClick={() => handleResizeCanvas(1350, 1080)}>
+                      <a onClick={() => handleResizeCanvas(1350, 1080, "5:4")}>
                         1350x1080 5:4
                       </a>
                     </li>
                     <li>
-                      <a onClick={() => handleResizeCanvas(1080, 1920)}>
+                      <a onClick={() => handleResizeCanvas(1080, 1920, "9:16")}>
                         1080x1920 9:16
                       </a>
                     </li>
@@ -730,7 +735,33 @@ export default function Home() {
             </ul>
           </div>
         </div>
-        <div className="flex flex-grow h-[10vh] bg-violet-700"></div>
+        <div className="flex flex-grow h-[10vh] bg-violet-700">
+          <div className="flex">
+            <p className="font-sans">
+              Test cards play a crucial role in evaluating and optimizing
+              software encoding pipelines, which are essential for converting
+              raw video feeds into digital formats suitable for broadcast. These
+              test cards, with their well-defined patterns and colors, provide a
+              standardized reference to ensure that the encoding process
+              accurately captures and transmits visual details and color
+              fidelity. This is particularly important in a digital broadcast
+              environment, where the quality of the encoding directly impacts
+              the viewer's experience.
+            </p>
+            <p className="font-sans">
+              Using test cards in software encoding pipelines allows engineers
+              to methodically test and calibrate various aspects of the video
+              processing chain. This includes checking compression algorithms,
+              verifying color grading, ensuring proper aspect ratio handling,
+              and assessing resolution scaling. The consistent use of test cards
+              helps in identifying any discrepancies or faults in the encoding
+              process, enabling technicians to fine-tune the software for
+              optimal performance. This not only enhances the quality of the
+              broadcast but also ensures reliability and efficiency in the
+              processing and transmission of digital video content.
+            </p>
+          </div>
+        </div>
         <div className="flex flex-grow">
           <div className="flex flex-row flex-grow h-[70vh]">
             <div className="w-1/12 debug-border bg-violet-700"></div>
@@ -746,9 +777,6 @@ export default function Home() {
                   className="shadow-2xl"
                   ref={canvasRef}
                 />
-              </div>
-              <div className="flex flex-row justify-center items-center">
-                Hello
               </div>
             </div>
             <div className="w-1/12 debug-border  bg-violet-700"></div>
