@@ -12,23 +12,32 @@ function Box(props) {
   // Hold state for hovered and clicked events
   const [hovered, hover] = useState(false);
   const [clicked, click] = useState(false);
+
   // Subscribe this component to the render-loop, rotate the mesh every frame
-  useFrame((state, delta) => (ref.current.rotation.x += delta));
+  useFrame((state, delta) => {
+    ref.current.rotation.x += delta;
+    ref.current.rotation.y += delta;
+    if (clicked) {
+      ref.current.rotation.z += delta;
+    }
+  });
+
+  let mesh = <boxGeometry args={[1, 1, 1, 5, 5, 5]} />;
+  if (clicked) {
+    mesh = <dodecahedronGeometry args={[1, 1]} />;
+  }
   // Return the view, these are regular Threejs elements expressed in JSX
   return (
     <mesh
       {...props}
       ref={ref}
-      scale={clicked ? 1.5 : 1}
+      scale={2}
       onClick={(event) => click(!clicked)}
       onPointerOver={(event) => (event.stopPropagation(), hover(true))}
       onPointerOut={(event) => hover(false)}
     >
-      <dodecahedronGeometry args={[1, 1]} />
-      <meshStandardMaterial
-        flatShading
-        color={hovered ? "hotpink" : "orange"}
-      />
+      {mesh}
+      <meshStandardMaterial flatShading color={hovered ? 0x606060 : 0x404040} />
     </mesh>
   );
 }
@@ -45,23 +54,16 @@ export default function Home() {
           </div>
         </div>
         <div className="flex flex-grow">
-          <div className="flex flex-row flex-grow h-[90vh]">
+          <div className="flex flex-row flex-grow h-[90vh] bg-gradient-to-b from-slate-800 to-slate-900">
             <Canvas>
-              <ambientLight intensity={Math.PI / 2} />
-              <spotLight
-                position={[10, 10, 10]}
-                angle={0.15}
-                penumbra={1}
-                decay={0}
-                intensity={Math.PI}
+              <hemisphereLight
+                skyColor={0xffffff}
+                groundColor={0x000000}
+                intensity={10.2}
               />
-              <pointLight
-                position={[-10, -10, -10]}
-                decay={0}
-                intensity={Math.PI}
-              />
-              <Box position={[-1.2, 0, 0]} />
-              <Box position={[1.2, 0, 0]} />
+              <ambientLight color={0x204040} intensity={10.2} />
+
+              <Box position={[0, 0, 0]} />
               <OrbitControls />
             </Canvas>
           </div>
