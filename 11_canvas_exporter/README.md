@@ -51,6 +51,8 @@ open  ~/Downloads/canvas.png
 
 ## Created
 
+NOTE: "use client"; must be added to the pages.  
+
 ```sh
 npx create-next-app --typescript 11_canvas_exporter
 npm i -D daisyui@latest

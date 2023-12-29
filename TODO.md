@@ -5,7 +5,7 @@
 * API calls
 * Auth
 * Dashboard
-* Dockerise
+* Dockerise - no compute
 * Lambda
 * Charts
 * https://daisyui.com/
