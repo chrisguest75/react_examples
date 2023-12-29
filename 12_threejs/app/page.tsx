@@ -59,21 +59,23 @@ function Box(props) {
 export default function Home() {
   const canvasRef = useRef(null);
 
-  const [{ xrotation, yrotation, zrotation, color, highlightColor, geometry }] =
-    useControls(() => ({
-      geometry: { value: "cube", options: ["sphere", "dodecahedron"] },
-      color: {
-        value: "#0d00ff",
-        label: "color",
-      },
-      highlightColor: {
-        value: "#0ca80c",
-        label: "highlight",
-      },
-      xrotation: true,
-      yrotation: true,
-      zrotation: true,
-    }));
+  const [
+    { xrotation, yrotation, zrotation, grid, color, highlightColor, geometry },
+  ] = useControls(() => ({
+    geometry: { value: "cube", options: ["sphere", "dodecahedron"] },
+    color: {
+      value: "#0d00ff",
+      label: "color",
+    },
+    highlightColor: {
+      value: "#0ca80c",
+      label: "highlight",
+    },
+    xrotation: true,
+    yrotation: true,
+    zrotation: true,
+    grid: true,
+  }));
 
   const handleButtonClick = () => {
     // Add your logic here for the button click
@@ -85,6 +87,10 @@ export default function Home() {
     link.click();
   };
 
+  let gridHelper;
+  if (grid) {
+    gridHelper = <gridHelper />;
+  }
   return (
     <main className="w-[100vw] h-[100vh]">
       <div className="flex flex-col">
@@ -129,6 +135,7 @@ export default function Home() {
                 enableZoom={true}
                 //autoRotate={rotate}
               />
+              {gridHelper}
             </Canvas>
           </div>
         </div>
