@@ -2,16 +2,6 @@
 
 React examples
 
-TODO:
-
-* TailwindCSS
-* Components
-* API calls
-* Auth
-* Dashboard
-* Dockerise
-* Lambda
-
 ## Extensions
 
 ```sh
