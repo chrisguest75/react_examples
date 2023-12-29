@@ -4,7 +4,8 @@ import Image from "next/image";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { useRef, useState } from "react";
 import { OrbitControls } from "@react-three/drei";
-import { useControls } from "leva";
+import { Leva, useControls } from "leva";
+import { DoubleSide } from "three";
 
 function Box(props) {
   // This reference gives us direct access to the THREE.Mesh object
@@ -34,6 +35,48 @@ function Box(props) {
     case "dodecahedron":
       mesh = <dodecahedronGeometry args={[1, 2]} />;
       break;
+    case "custom":
+      const positions = new Float32Array([
+        1, 0, 0, 0, 1, 0, -1, 0, 0, 0, -1, 0,
+      ]);
+
+      const normals = new Float32Array([0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1]);
+
+      const colors = new Float32Array([
+        0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1,
+      ]);
+
+      const indices = new Uint16Array([0, 1, 3, 2, 3, 1]);
+
+      mesh = (
+        <bufferGeometry>
+          <bufferAttribute
+            attach="attributes-position"
+            array={positions}
+            count={positions.length / 3}
+            itemSize={3}
+          />
+          <bufferAttribute
+            attach="attributes-color"
+            array={colors}
+            count={colors.length / 3}
+            itemSize={3}
+          />
+          <bufferAttribute
+            attach="attributes-normal"
+            array={normals}
+            count={normals.length / 3}
+            itemSize={3}
+          />
+          <bufferAttribute
+            attach="index"
+            array={indices}
+            count={indices.length}
+            itemSize={1}
+          />
+        </bufferGeometry>
+      );
+      break;
     default:
       break;
   }
@@ -51,6 +94,7 @@ function Box(props) {
       <meshStandardMaterial
         flatShading
         color={hovered ? props.highlight : props.color}
+        side={DoubleSide}
       />
     </mesh>
   );
@@ -58,11 +102,12 @@ function Box(props) {
 
 export default function Home() {
   const canvasRef = useRef(null);
+  const [showLeva, toggleLeva] = useState(false);
 
   const [
     { xrotation, yrotation, zrotation, grid, color, highlightColor, geometry },
   ] = useControls(() => ({
-    geometry: { value: "cube", options: ["sphere", "dodecahedron"] },
+    geometry: { value: "cube", options: ["sphere", "dodecahedron", "custom"] },
     color: {
       value: "#0d00ff",
       label: "color",
@@ -91,6 +136,12 @@ export default function Home() {
   if (grid) {
     gridHelper = <gridHelper />;
   }
+
+  let leva = <Leva hidden />;
+  if (showLeva) {
+    leva = <Leva />;
+  }
+
   return (
     <main className="w-[100vw] h-[100vh]">
       <div className="flex flex-col">
@@ -101,7 +152,10 @@ export default function Home() {
           <div className="flex-none">
             <ul className="menu menu-horizontal px-2">
               <li>
-                <a onClick={handleButtonClick}>Export</a>
+                <a onClick={handleButtonClick}>Save</a>
+              </li>
+              <li>
+                <a onClick={() => toggleLeva(!showLeva)}>Customize</a>
               </li>
             </ul>
           </div>
@@ -147,6 +201,7 @@ export default function Home() {
             CommitId: 1234567890abcdef
           </nav>
         </footer>
+        {leva}
       </div>
     </main>
   );

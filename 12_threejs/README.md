@@ -71,6 +71,8 @@ npm install --save-dev @types/three
 * Introduction - React-three-fiber is a React renderer for three.js. [here](https://docs.pmnd.rs/react-three-fiber/getting-started/introduction)
 * https://codesandbox.io/p/sandbox/confetti-vl221
 * https://github.com/pmndrs/drei#readme
+* https://stackoverflow.com/questions/69891379/react-three-fiber-to-draw-custom-vertices
+* https://blog.maximeheckel.com/posts/the-study-of-shaders-with-react-three-fiber/
 
 ### Leva
 
