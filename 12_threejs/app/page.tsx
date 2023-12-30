@@ -77,12 +77,12 @@ function Box(props) {
 
       // prettier-ignore
       const indices = new Uint16Array([ 
-        0,  4,  1,  1,  4,  2,  2,  4,  3,  3,  4,  0,  // Front face
+        1,  4,  0,  2,  4,  1,  3,  4,  2,  0,  4,  3,  // Front face
         5,  9,  6,  6,  9,  7,  7,  9,  8,  8,  9,  5,  // Back face
-        10, 14, 11, 11, 14, 12, 12, 14, 13, 13, 14, 10,  // Top face
+        11, 14, 10, 12, 14, 11, 13, 14, 12, 10, 14, 13,  // Top face
         15, 19, 16, 16, 19, 17, 17, 19, 18, 18, 19, 15,  // Bottom face
         20, 24, 21, 21, 24, 22, 22, 24, 23, 23, 24, 20,  // Right face
-        25, 29, 26, 26, 29, 27, 27, 29, 28, 28, 29, 25  // Left face
+        26, 29, 25, 27, 29, 26, 28, 29, 27, 25, 29, 28  // Left face
       ]);
 
       // prettier-ignore
@@ -144,15 +144,24 @@ function Box(props) {
       color={hovered ? props.highlight : props.color}
       transparent={true}
       opacity={0.5}
-      side={THREE.DoubleSide}
+      side={props.doublesided ? THREE.DoubleSide : undefined}
     />
   );
+  if (props.solid) {
+    material = (
+      <meshStandardMaterial
+        flatShading
+        color={hovered ? props.highlight : props.color}
+        side={props.doublesided ? THREE.DoubleSide : undefined}
+      />
+    );
+  }
   if (props.wireframe) {
     material = (
       <meshStandardMaterial
         wireframe={true}
         color={hovered ? props.highlight : props.color}
-        side={THREE.DoubleSide}
+        side={props.doublesided ? THREE.DoubleSide : undefined}
       />
     );
   }
@@ -183,13 +192,18 @@ export default function Home() {
       yrotation,
       zrotation,
       wireframe,
+      solid,
+      doublesided,
       grid,
       color,
       highlightColor,
       geometry,
     },
   ] = useControls(() => ({
-    geometry: { value: "cube", options: ["sphere", "dodecahedron", "custom"] },
+    geometry: {
+      value: "custom",
+      options: ["cube", "sphere", "dodecahedron", "custom"],
+    },
     color: {
       value: "#0d00ff",
       label: "color",
@@ -202,6 +216,8 @@ export default function Home() {
     yrotation: false,
     zrotation: false,
     wireframe: false,
+    solid: true,
+    doublesided: false,
     grid: true,
   }));
 
@@ -263,6 +279,8 @@ export default function Home() {
                 highlight={highlightColor}
                 rotations={{ x: xrotation, y: yrotation, z: zrotation }}
                 wireframe={wireframe}
+                solid={solid}
+                doublesided={doublesided}
               />
               <OrbitControls
                 enablePan={false}
