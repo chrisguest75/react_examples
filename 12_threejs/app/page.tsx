@@ -274,6 +274,30 @@ export default function Home() {
                 //autoRotate={rotate}
               />
               {gridHelper}
+              <arrowHelper
+                args={[
+                  new THREE.Vector3(1, 0, 0),
+                  new THREE.Vector3(0, 0, 0),
+                  3.0,
+                  0xff0000,
+                ]}
+              />
+              <arrowHelper
+                args={[
+                  new THREE.Vector3(0, 1, 0),
+                  new THREE.Vector3(0, 0, 0),
+                  3.0,
+                  0x00ff00,
+                ]}
+              />
+              <arrowHelper
+                args={[
+                  new THREE.Vector3(0, 0, 1),
+                  new THREE.Vector3(0, 0, 0),
+                  3.0,
+                  0x0000ff,
+                ]}
+              />
             </Canvas>
           </div>
         </div>
