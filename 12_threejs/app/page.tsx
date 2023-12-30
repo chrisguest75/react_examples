@@ -5,7 +5,7 @@ import { Canvas, useFrame } from "@react-three/fiber";
 import { useRef, useState } from "react";
 import { OrbitControls } from "@react-three/drei";
 import { Leva, useControls } from "leva";
-import { DoubleSide } from "three";
+import * as THREE from "three";
 
 function Box(props) {
   // This reference gives us direct access to the THREE.Mesh object
@@ -36,24 +36,81 @@ function Box(props) {
       mesh = <dodecahedronGeometry args={[1, 2]} />;
       break;
     case "custom":
-      const positions = new Float32Array([
-        1, 0, 0, 0, 1, 0, -1, 0, 0, 0, -1, 0,
+      // prettier-ignore
+      const vertices = new Float32Array([
+        -0.5, -0.5,  0.5,  // Front Bottom Left
+        0.5, -0.5,  0.5,  // Front Bottom Right
+        0.5,  0.5,  0.5,  // Front Top Right
+        -0.5,  0.5,  0.5,  // Front Top Left
+        0.0,  0.0,  0.5,  // Front Center
+      
+        -0.5, -0.5, -0.5,  // Back Bottom Left
+        0.5, -0.5, -0.5,  // Back Bottom Right
+        0.5,  0.5, -0.5,  // Back Top Right
+        -0.5,  0.5, -0.5,  // Back Top Left
+        0.0,  0.0, -0.5,  // Back Center
+
+        -0.5,  0.5, -0.5,  // Top Back Left
+        -0.5,  0.5,  0.5,  // Top Front Left
+        0.5,  0.5,  0.5,  // Top Front Right
+        0.5,  0.5, -0.5,  // Top Back Right
+        0.0,  0.5,  0.0,  // Top Center
+
+        -0.5, -0.5, -0.5,  // Bottom Back Left
+        -0.5, -0.5,  0.5,  // Bottom Front Left
+        0.5, -0.5,  0.5,  // Bottom Front Right
+        0.5, -0.5, -0.5,  // Bottom Back Right
+        0.0, -0.5,  0.0,  // Bottom Center
+      
+        0.5, -0.5, -0.5,  // Right Back Bottom
+        0.5, -0.5,  0.5,  // Right Front Bottom
+        0.5,  0.5,  0.5,  // Right Front Top
+        0.5,  0.5, -0.5,  // Right Back Top
+        0.5,  0.0,  0.0,  // Right Center
+      
+      -0.5, -0.5, -0.5,  // Left Back Bottom
+      -0.5, -0.5,  0.5,  // Left Front Bottom
+      -0.5,  0.5,  0.5,  // Left Front Top
+      -0.5,  0.5, -0.5,  // Left Back Top
+      -0.5,  0.0,  0.0  // Left Center
       ]);
 
-      const normals = new Float32Array([0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1]);
+      // prettier-ignore
+      const indices = new Uint16Array([ 
+        0,  4,  1,  1,  4,  2,  2,  4,  3,  3,  4,  0,  // Front face
+        5,  9,  6,  6,  9,  7,  7,  9,  8,  8,  9,  5,  // Back face
+        10, 14, 11, 11, 14, 12, 12, 14, 13, 13, 14, 10,  // Top face
+        15, 19, 16, 16, 19, 17, 17, 19, 18, 18, 19, 15,  // Bottom face
+        20, 24, 21, 21, 24, 22, 22, 24, 23, 23, 24, 20,  // Right face
+        25, 29, 26, 26, 29, 27, 27, 29, 28, 28, 29, 25  // Left face
+      ]);
 
+      // prettier-ignore
+      const normals = new Float32Array([ 
+        0,  0,  1,  0,  0,  1,  0,  0,  1,  0,  0,  1,  0,  0,  1,  // Front face normals
+        0,  0, -1,  0,  0, -1,  0,  0, -1,  0,  0, -1,  0,  0, -1,  // Back face normals
+        0,  1,  0,  0,  1,  0,  0,  1,  0,  0,  1,  0,  0,  1,  0,  // Top face normals
+        0, -1,  0,  0, -1,  0,  0, -1,  0,  0, -1,  0,  0, -1,  0,  // Bottom face normals
+        1,  0,  0,  1,  0,  0,  1,  0,  0,  1,  0,  0,  1,  0,  0,  // Right face normals
+       -1,  0,  0, -1,  0,  0, -1,  0,  0, -1,  0,  0, -1,  0,  0  // Left face normals
+            ]);
+
+      // prettier-ignore
       const colors = new Float32Array([
-        0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1,
+        1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0,  // Front face (red)
+        0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0,  // Back face (green)
+        0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1,  // Top face (blue)
+        1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0,  // Bottom face (yellow)
+        0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1,  // Right face (cyan)
+        1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1  // Left face (magenta)
       ]);
-
-      const indices = new Uint16Array([0, 1, 3, 2, 3, 1]);
 
       mesh = (
         <bufferGeometry>
           <bufferAttribute
             attach="attributes-position"
-            array={positions}
-            count={positions.length / 3}
+            array={vertices}
+            count={vertices.length / 3}
             itemSize={3}
           />
           <bufferAttribute
@@ -80,6 +137,26 @@ function Box(props) {
     default:
       break;
   }
+
+  let material = (
+    <meshStandardMaterial
+      flatShading
+      color={hovered ? props.highlight : props.color}
+      transparent={true}
+      opacity={0.5}
+      side={THREE.DoubleSide}
+    />
+  );
+  if (props.wireframe) {
+    material = (
+      <meshStandardMaterial
+        wireframe={true}
+        color={hovered ? props.highlight : props.color}
+        side={THREE.DoubleSide}
+      />
+    );
+  }
+
   // Return the view, these are regular Threejs elements expressed in JSX
   return (
     <mesh
@@ -91,11 +168,7 @@ function Box(props) {
       onPointerOut={(event) => hover(false)}
     >
       {mesh}
-      <meshStandardMaterial
-        flatShading
-        color={hovered ? props.highlight : props.color}
-        side={DoubleSide}
-      />
+      {material}
     </mesh>
   );
 }
@@ -105,7 +178,16 @@ export default function Home() {
   const [showLeva, toggleLeva] = useState(false);
 
   const [
-    { xrotation, yrotation, zrotation, grid, color, highlightColor, geometry },
+    {
+      xrotation,
+      yrotation,
+      zrotation,
+      wireframe,
+      grid,
+      color,
+      highlightColor,
+      geometry,
+    },
   ] = useControls(() => ({
     geometry: { value: "cube", options: ["sphere", "dodecahedron", "custom"] },
     color: {
@@ -116,9 +198,10 @@ export default function Home() {
       value: "#0ca80c",
       label: "highlight",
     },
-    xrotation: true,
-    yrotation: true,
-    zrotation: true,
+    xrotation: false,
+    yrotation: false,
+    zrotation: false,
+    wireframe: false,
     grid: true,
   }));
 
@@ -179,11 +262,12 @@ export default function Home() {
                 color={color}
                 highlight={highlightColor}
                 rotations={{ x: xrotation, y: yrotation, z: zrotation }}
+                wireframe={wireframe}
               />
               <OrbitControls
                 enablePan={false}
-                minPolarAngle={1.5}
-                maxPolarAngle={1.5}
+                //minPolarAngle={1.5}
+                //maxPolarAngle={1.5}
                 minDistance={5}
                 maxDistance={10}
                 enableZoom={true}
