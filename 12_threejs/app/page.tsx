@@ -236,6 +236,7 @@ export default function Home() {
       wireframe,
       solid,
       doublesided,
+      arrows,
       grid,
       color,
       highlightColor,
@@ -260,6 +261,7 @@ export default function Home() {
     wireframe: false,
     solid: true,
     doublesided: true,
+    arrows: true,
     grid: true,
   }));
 
@@ -321,6 +323,38 @@ export default function Home() {
       break;
   }
 
+  let arrowHelper = <></>;
+  if (arrows) {
+    arrowHelper = (
+      <>
+        <arrowHelper
+          args={[
+            new THREE.Vector3(1, 0, 0),
+            new THREE.Vector3(0, 0, 0),
+            3.0,
+            0xff0000,
+          ]}
+        />
+        <arrowHelper
+          args={[
+            new THREE.Vector3(0, 1, 0),
+            new THREE.Vector3(0, 0, 0),
+            3.0,
+            0x00ff00,
+          ]}
+        />
+        <arrowHelper
+          args={[
+            new THREE.Vector3(0, 0, 1),
+            new THREE.Vector3(0, 0, 0),
+            3.0,
+            0x0000ff,
+          ]}
+        />
+      </>
+    );
+  }
+
   return (
     <main className="w-[100vw] h-[100vh]">
       <div className="flex flex-col">
@@ -362,30 +396,7 @@ export default function Home() {
                 //autoRotate={rotate}
               />
               {gridHelper}
-              <arrowHelper
-                args={[
-                  new THREE.Vector3(1, 0, 0),
-                  new THREE.Vector3(0, 0, 0),
-                  3.0,
-                  0xff0000,
-                ]}
-              />
-              <arrowHelper
-                args={[
-                  new THREE.Vector3(0, 1, 0),
-                  new THREE.Vector3(0, 0, 0),
-                  3.0,
-                  0x00ff00,
-                ]}
-              />
-              <arrowHelper
-                args={[
-                  new THREE.Vector3(0, 0, 1),
-                  new THREE.Vector3(0, 0, 0),
-                  3.0,
-                  0x0000ff,
-                ]}
-              />
+              {arrowHelper}
             </Canvas>
           </div>
         </div>

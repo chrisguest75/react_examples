@@ -9,6 +9,10 @@ TODO:
 * Add a textured and shader example.
 * Morphing meshes
 
+NOTES:
+
+* You can use react fractions `<></>` to wrap multiple nodes to create a heirarchy.  
+
 ## Install
 
 ```sh
@@ -74,10 +78,14 @@ npm install --save-dev @types/three
 * What are React and React Three Fiber [here](https://threejs-journey.com/lessons/what-are-react-and-react-three-fiber#react-three-fiber)
 * Pmndrs.docs [here](https://docs.pmnd.rs/)
 * Introduction - React-three-fiber is a React renderer for three.js. [here](https://docs.pmnd.rs/react-three-fiber/getting-started/introduction)
-* https://codesandbox.io/p/sandbox/confetti-vl221
 * https://github.com/pmndrs/drei#readme
 * https://stackoverflow.com/questions/69891379/react-three-fiber-to-draw-custom-vertices
 * https://blog.maximeheckel.com/posts/the-study-of-shaders-with-react-three-fiber/
+
+### Examples
+
+* https://hofk.de/main/discourse.threejs/
+* https://codesandbox.io/p/sandbox/confetti-vl221
 
 ### Leva
 
