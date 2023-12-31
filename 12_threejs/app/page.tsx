@@ -7,7 +7,7 @@ import { OrbitControls } from "@react-three/drei";
 import { Leva, useControls } from "leva";
 import * as THREE from "three";
 
-function Box(props) {
+function Mesh(props) {
   // This reference gives us direct access to the THREE.Mesh object
   const ref = useRef();
   // Hold state for hovered and clicked events
@@ -27,112 +27,15 @@ function Box(props) {
     }
   });
 
-  let mesh = <boxGeometry args={[1.5, 1.5, 1.5, 5, 5, 5]} />;
+  let geometry = <boxGeometry args={[1.5, 1.5, 1.5, 5, 5, 5]} />;
   switch (props.geometry) {
     case "sphere":
-      mesh = <sphereGeometry args={[1, 8, 8]} />;
+      geometry = <sphereGeometry args={[1, 8, 8]} />;
       break;
     case "dodecahedron":
-      mesh = <dodecahedronGeometry args={[1, 2]} />;
+      geometry = <dodecahedronGeometry args={[1, 2]} />;
       break;
     case "custom":
-      // prettier-ignore
-      const vertices = new Float32Array([
-        -0.5, -0.5,  0.5,  // Front Bottom Left
-        0.5, -0.5,  0.5,  // Front Bottom Right
-        0.5,  0.5,  0.5,  // Front Top Right
-        -0.5,  0.5,  0.5,  // Front Top Left
-        0.0,  0.0,  0.5,  // Front Center
-      
-        -0.5, -0.5, -0.5,  // Back Bottom Left
-        0.5, -0.5, -0.5,  // Back Bottom Right
-        0.5,  0.5, -0.5,  // Back Top Right
-        -0.5,  0.5, -0.5,  // Back Top Left
-        0.0,  0.0, -0.5,  // Back Center
-
-        -0.5,  0.5, -0.5,  // Top Back Left
-        -0.5,  0.5,  0.5,  // Top Front Left
-        0.5,  0.5,  0.5,  // Top Front Right
-        0.5,  0.5, -0.5,  // Top Back Right
-        0.0,  0.5,  0.0,  // Top Center
-
-        -0.5, -0.5, -0.5,  // Bottom Back Left
-        -0.5, -0.5,  0.5,  // Bottom Front Left
-        0.5, -0.5,  0.5,  // Bottom Front Right
-        0.5, -0.5, -0.5,  // Bottom Back Right
-        0.0, -0.5,  0.0,  // Bottom Center
-      
-        0.5, -0.5, -0.5,  // Right Back Bottom
-        0.5, -0.5,  0.5,  // Right Front Bottom
-        0.5,  0.5,  0.5,  // Right Front Top
-        0.5,  0.5, -0.5,  // Right Back Top
-        0.5,  0.0,  0.0,  // Right Center
-      
-      -0.5, -0.5, -0.5,  // Left Back Bottom
-      -0.5, -0.5,  0.5,  // Left Front Bottom
-      -0.5,  0.5,  0.5,  // Left Front Top
-      -0.5,  0.5, -0.5,  // Left Back Top
-      -0.5,  0.0,  0.0  // Left Center
-      ]);
-
-      // prettier-ignore
-      const indices = new Uint16Array([ 
-        1,  4,  0,  2,  4,  1,  3,  4,  2,  0,  4,  3,  // Front face
-        5,  9,  6,  6,  9,  7,  7,  9,  8,  8,  9,  5,  // Back face
-        11, 14, 10, 12, 14, 11, 13, 14, 12, 10, 14, 13,  // Top face
-        15, 19, 16, 16, 19, 17, 17, 19, 18, 18, 19, 15,  // Bottom face
-        20, 24, 21, 21, 24, 22, 22, 24, 23, 23, 24, 20,  // Right face
-        26, 29, 25, 27, 29, 26, 28, 29, 27, 25, 29, 28  // Left face
-      ]);
-
-      // prettier-ignore
-      const normals = new Float32Array([ 
-        0,  0,  1,  0,  0,  1,  0,  0,  1,  0,  0,  1,  0,  0,  1,  // Front face normals
-        0,  0, -1,  0,  0, -1,  0,  0, -1,  0,  0, -1,  0,  0, -1,  // Back face normals
-        0,  1,  0,  0,  1,  0,  0,  1,  0,  0,  1,  0,  0,  1,  0,  // Top face normals
-        0, -1,  0,  0, -1,  0,  0, -1,  0,  0, -1,  0,  0, -1,  0,  // Bottom face normals
-        1,  0,  0,  1,  0,  0,  1,  0,  0,  1,  0,  0,  1,  0,  0,  // Right face normals
-       -1,  0,  0, -1,  0,  0, -1,  0,  0, -1,  0,  0, -1,  0,  0  // Left face normals
-            ]);
-
-      // prettier-ignore
-      const colors = new Float32Array([
-        1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0,  // Front face (red)
-        0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0,  // Back face (green)
-        0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1,  // Top face (blue)
-        1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0,  // Bottom face (yellow)
-        0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1,  // Right face (cyan)
-        1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1  // Left face (magenta)
-      ]);
-
-      mesh = (
-        <bufferGeometry>
-          <bufferAttribute
-            attach="attributes-position"
-            array={vertices}
-            count={vertices.length / 3}
-            itemSize={3}
-          />
-          <bufferAttribute
-            attach="attributes-color"
-            array={colors}
-            count={colors.length / 3}
-            itemSize={3}
-          />
-          <bufferAttribute
-            attach="attributes-normal"
-            array={normals}
-            count={normals.length / 3}
-            itemSize={3}
-          />
-          <bufferAttribute
-            attach="index"
-            array={indices}
-            count={indices.length}
-            itemSize={1}
-          />
-        </bufferGeometry>
-      );
       break;
     default:
       break;
@@ -176,9 +79,148 @@ function Box(props) {
       onPointerOver={(event) => (event.stopPropagation(), hover(true))}
       onPointerOut={(event) => hover(false)}
     >
-      {mesh}
+      {geometry}
       {material}
     </mesh>
+  );
+}
+
+function CustomMesh(props) {
+  // This reference gives us direct access to the THREE.Mesh object
+  const ref = useRef();
+  // Hold state for hovered and clicked events
+  const [hovered, hover] = useState(false);
+  const [clicked, click] = useState(false);
+
+  // Subscribe this component to the render-loop, rotate the mesh every frame
+  useFrame((state, delta) => {
+    if (props.rotations.x) {
+      ref.current.rotation.x += delta;
+    }
+    if (props.rotations.y) {
+      ref.current.rotation.y += delta;
+    }
+    if (props.rotations.z) {
+      ref.current.rotation.z += delta;
+    }
+  });
+
+  // prettier-ignore
+  const vertices = new Float32Array([
+    -0.5, -0.5,  0.5,  // Front Bottom Left
+    0.5, -0.5,  0.5,  // Front Bottom Right
+    0.5,  0.5,  0.5,  // Front Top Right
+    -0.5,  0.5,  0.5,  // Front Top Left
+    0.0,  0.0,  0.5,  // Front Center
+  
+    -0.5, -0.5, -0.5,  // Back Bottom Left
+    0.5, -0.5, -0.5,  // Back Bottom Right
+    0.5,  0.5, -0.5,  // Back Top Right
+    -0.5,  0.5, -0.5,  // Back Top Left
+    0.0,  0.0, -0.5,  // Back Center
+
+    -0.5,  0.5, -0.5,  // Top Back Left
+    -0.5,  0.5,  0.5,  // Top Front Left
+    0.5,  0.5,  0.5,  // Top Front Right
+    0.5,  0.5, -0.5,  // Top Back Right
+    0.0,  0.5,  0.0,  // Top Center
+
+    -0.5, -0.5, -0.5,  // Bottom Back Left
+    -0.5, -0.5,  0.5,  // Bottom Front Left
+    0.5, -0.5,  0.5,  // Bottom Front Right
+    0.5, -0.5, -0.5,  // Bottom Back Right
+    0.0, -0.5,  0.0,  // Bottom Center
+  
+    0.5, -0.5, -0.5,  // Right Back Bottom
+    0.5, -0.5,  0.5,  // Right Front Bottom
+    0.5,  0.5,  0.5,  // Right Front Top
+    0.5,  0.5, -0.5,  // Right Back Top
+    0.5,  0.0,  0.0,  // Right Center
+  
+  -0.5, -0.5, -0.5,  // Left Back Bottom
+  -0.5, -0.5,  0.5,  // Left Front Bottom
+  -0.5,  0.5,  0.5,  // Left Front Top
+  -0.5,  0.5, -0.5,  // Left Back Top
+  -0.5,  0.0,  0.0  // Left Center
+  ]);
+
+  // prettier-ignore
+  const indices = new Uint16Array([ 
+    1,  4,  0,  2,  4,  1,  3,  4,  2,  0,  4,  3,  // Front face
+    5,  9,  6,  6,  9,  7,  7,  9,  8,  8,  9,  5,  // Back face
+    11, 14, 10, 12, 14, 11, 13, 14, 12, 10, 14, 13,  // Top face
+    15, 19, 16, 16, 19, 17, 17, 19, 18, 18, 19, 15,  // Bottom face
+    20, 24, 21, 21, 24, 22, 22, 24, 23, 23, 24, 20,  // Right face
+    26, 29, 25, 27, 29, 26, 28, 29, 27, 25, 29, 28  // Left face
+  ]);
+
+  // prettier-ignore
+  const normals = new Float32Array([ 
+    0,  0,  1,  0,  0,  1,  0,  0,  1,  0,  0,  1,  0,  0,  1,  // Front face normals
+    0,  0, -1,  0,  0, -1,  0,  0, -1,  0,  0, -1,  0,  0, -1,  // Back face normals
+    0,  1,  0,  0,  1,  0,  0,  1,  0,  0,  1,  0,  0,  1,  0,  // Top face normals
+    0, -1,  0,  0, -1,  0,  0, -1,  0,  0, -1,  0,  0, -1,  0,  // Bottom face normals
+    1,  0,  0,  1,  0,  0,  1,  0,  0,  1,  0,  0,  1,  0,  0,  // Right face normals
+    -1,  0,  0, -1,  0,  0, -1,  0,  0, -1,  0,  0, -1,  0,  0  // Left face normals
+        ]);
+
+  // prettier-ignore
+  const colors = new Float32Array([
+    1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0,  // Front face (red)
+    0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0,  // Back face (green)
+    0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1,  // Top face (blue)
+    1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0,  // Bottom face (yellow)
+    0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1,  // Right face (cyan)
+    1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1  // Left face (magenta)
+  ]);
+
+  const buffergeometry = new THREE.BufferGeometry();
+  buffergeometry.setAttribute(
+    "position",
+    new THREE.BufferAttribute(vertices, 3)
+  );
+  buffergeometry.setAttribute("normal", new THREE.BufferAttribute(normals, 3));
+  buffergeometry.setAttribute("color", new THREE.BufferAttribute(colors, 3));
+  buffergeometry.setIndex(new THREE.BufferAttribute(indices, 1));
+
+  // Define materials
+  const opaqueMaterial = new THREE.MeshStandardMaterial({
+    //vertexColors: true,
+    flatShading: true,
+    color: props.color,
+    side: props.doublesided ? THREE.DoubleSide : undefined,
+    transparent: true,
+    opacity: 0.5,
+  });
+  const transparentMaterial = new THREE.MeshStandardMaterial({
+    //vertexColors: true,
+    flatShading: true,
+    color: "#ffffff",
+    side: props.doublesided ? THREE.DoubleSide : undefined,
+    transparent: true,
+    opacity: 0.5,
+  });
+
+  // Assign materials to groups (each group corresponds to a pair of triangles / one cube face)
+  buffergeometry.clearGroups();
+  for (let i = 0; i < 72; i += 3) {
+    buffergeometry.addGroup(i, 3, i % 2);
+  }
+
+  // Use an array of materials
+  const materials = [opaqueMaterial, transparentMaterial];
+
+  return (
+    <mesh
+      position={props.position}
+      ref={ref}
+      scale={2}
+      onClick={(event) => click(!clicked)}
+      onPointerOver={(event) => (event.stopPropagation(), hover(true))}
+      onPointerOut={(event) => hover(false)}
+      geometry={buffergeometry}
+      material={materials}
+    ></mesh>
   );
 }
 
@@ -201,7 +243,7 @@ export default function Home() {
     },
   ] = useControls(() => ({
     geometry: {
-      value: "custom",
+      value: "cube",
       options: ["cube", "sphere", "dodecahedron", "custom"],
     },
     color: {
@@ -217,7 +259,7 @@ export default function Home() {
     zrotation: false,
     wireframe: false,
     solid: true,
-    doublesided: false,
+    doublesided: true,
     grid: true,
   }));
 
@@ -239,6 +281,44 @@ export default function Home() {
   let leva = <Leva hidden />;
   if (showLeva) {
     leva = <Leva />;
+  }
+
+  let mesh = <Mesh />;
+
+  switch (geometry) {
+    case "sphere":
+    case "dodecahedron":
+    case "cube":
+      mesh = (
+        <Mesh
+          position={[0, 0, 0]}
+          geometry={geometry}
+          color={color}
+          highlight={highlightColor}
+          rotations={{ x: xrotation, y: yrotation, z: zrotation }}
+          wireframe={wireframe}
+          solid={solid}
+          doublesided={doublesided}
+        />
+      );
+      break;
+    case "custom":
+      mesh = (
+        <CustomMesh
+          position={[0.0, 0.0, 0]}
+          geometry={geometry}
+          color={color}
+          highlight={highlightColor}
+          rotations={{ x: xrotation, y: yrotation, z: zrotation }}
+          wireframe={wireframe}
+          solid={solid}
+          doublesided={doublesided}
+        />
+      );
+      break;
+
+    default:
+      break;
   }
 
   return (
@@ -271,17 +351,7 @@ export default function Home() {
                 intensity={10.2}
               />
               <ambientLight color={0x204040} intensity={5.2} />
-
-              <Box
-                position={[0, 0, 0]}
-                geometry={geometry}
-                color={color}
-                highlight={highlightColor}
-                rotations={{ x: xrotation, y: yrotation, z: zrotation }}
-                wireframe={wireframe}
-                solid={solid}
-                doublesided={doublesided}
-              />
+              {mesh}
               <OrbitControls
                 enablePan={false}
                 //minPolarAngle={1.5}
