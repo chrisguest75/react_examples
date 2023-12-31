@@ -5,7 +5,9 @@ Create a threejs example.
 TODO:
 
 * Fix sizing down
-* try a glenz example
+* Turn on and off arrows
+* Add a textured and shader example.
+* Morphing meshes
 
 ## Install
 
