@@ -107,41 +107,41 @@ function CustomMesh(props) {
 
   // prettier-ignore
   const vertices = new Float32Array([
-    -0.5, -0.5,  0.5,  // Front Bottom Left
-    0.5, -0.5,  0.5,  // Front Bottom Right
-    0.5,  0.5,  0.5,  // Front Top Right
-    -0.5,  0.5,  0.5,  // Front Top Left
-    0.0,  0.0,  0.5,  // Front Center
+    -1.0, -1.0,  1.0,  // Front Bottom Left
+    1.0, -1.0,  1.0,  // Front Bottom Right
+    1.0,  1.0,  1.0,  // Front Top Right
+    -1.0,  1.0,  1.0,  // Front Top Left
+    0.0,  0.0,  1.0,  // Front Center
   
-    -0.5, -0.5, -0.5,  // Back Bottom Left
-    0.5, -0.5, -0.5,  // Back Bottom Right
-    0.5,  0.5, -0.5,  // Back Top Right
-    -0.5,  0.5, -0.5,  // Back Top Left
-    0.0,  0.0, -0.5,  // Back Center
+    -1.0, -1.0, -1.0,  // Back Bottom Left
+    1.0, -1.0, -1.0,  // Back Bottom Right
+    1.0,  1.0, -1.0,  // Back Top Right
+    -1.0,  1.0, -1.0,  // Back Top Left
+    0.0,  0.0, -1.0,  // Back Center
 
-    -0.5,  0.5, -0.5,  // Top Back Left
-    -0.5,  0.5,  0.5,  // Top Front Left
-    0.5,  0.5,  0.5,  // Top Front Right
-    0.5,  0.5, -0.5,  // Top Back Right
-    0.0,  0.5,  0.0,  // Top Center
+    -1.0,  1.0, -1.0,  // Top Back Left
+    -1.0,  1.0,  1.0,  // Top Front Left
+    1.0,  1.0,  1.0,  // Top Front Right
+    1.0,  1.0, -1.0,  // Top Back Right
+    0.0,  1.0,  0.0,  // Top Center
 
-    -0.5, -0.5, -0.5,  // Bottom Back Left
-    -0.5, -0.5,  0.5,  // Bottom Front Left
-    0.5, -0.5,  0.5,  // Bottom Front Right
-    0.5, -0.5, -0.5,  // Bottom Back Right
-    0.0, -0.5,  0.0,  // Bottom Center
+    -1.0, -1.0, -1.0,  // Bottom Back Left
+    -1.0, -1.0,  1.0,  // Bottom Front Left
+    1.0, -1.0,  1.0,  // Bottom Front Right
+    1.0, -1.0, -1.0,  // Bottom Back Right
+    0.0, -1.0,  0.0,  // Bottom Center
   
-    0.5, -0.5, -0.5,  // Right Back Bottom
-    0.5, -0.5,  0.5,  // Right Front Bottom
-    0.5,  0.5,  0.5,  // Right Front Top
-    0.5,  0.5, -0.5,  // Right Back Top
-    0.5,  0.0,  0.0,  // Right Center
+    1.0, -1.0, -1.0,  // Right Back Bottom
+    1.0, -1.0,  1.0,  // Right Front Bottom
+    1.0,  1.0,  1.0,  // Right Front Top
+    1.0,  1.0, -1.0,  // Right Back Top
+    1.0,  0.0,  0.0,  // Right Center
   
-  -0.5, -0.5, -0.5,  // Left Back Bottom
-  -0.5, -0.5,  0.5,  // Left Front Bottom
-  -0.5,  0.5,  0.5,  // Left Front Top
-  -0.5,  0.5, -0.5,  // Left Back Top
-  -0.5,  0.0,  0.0  // Left Center
+  -1.0, -1.0, -1.0,  // Left Back Bottom
+  -1.0, -1.0,  1.0,  // Left Front Bottom
+  -1.0,  1.0,  1.0,  // Left Front Top
+  -1.0,  1.0, -1.0,  // Left Back Top
+  -1.0,  0.0,  0.0  // Left Center
   ]);
 
   // prettier-ignore
@@ -166,12 +166,12 @@ function CustomMesh(props) {
 
   // prettier-ignore
   const colors = new Float32Array([
-    1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0,  // Front face (red)
-    0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0,  // Back face (green)
-    0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1,  // Top face (blue)
-    1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0,  // Bottom face (yellow)
-    0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1,  // Right face (cyan)
-    1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1  // Left face (magenta)
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,  // Front face (red)
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,  // Back face (green)
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,  // Top face (blue)
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,  // Bottom face (yellow)
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,  // Right face (cyan)
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1  // Left face (magenta)
   ]);
 
   const buffergeometry = new THREE.BufferGeometry();
@@ -182,26 +182,26 @@ function CustomMesh(props) {
   buffergeometry.setAttribute("normal", new THREE.BufferAttribute(normals, 3));
   buffergeometry.setAttribute("color", new THREE.BufferAttribute(colors, 3));
   buffergeometry.setIndex(new THREE.BufferAttribute(indices, 1));
-
+  buffergeometry.computeVertexNormals();
   // Define materials
   const opaqueMaterial = new THREE.MeshStandardMaterial({
-    //vertexColors: true,
-    flatShading: true,
-    color: props.color,
-    side: props.doublesided ? THREE.DoubleSide : undefined,
-    transparent: true,
-    opacity: 0.5,
-  });
-  const transparentMaterial = new THREE.MeshStandardMaterial({
-    //vertexColors: true,
     flatShading: true,
     color: "#ffffff",
-    side: props.doublesided ? THREE.DoubleSide : undefined,
+    side: THREE.DoubleSide,
+    transparent: true,
+    opacity: 0.7,
+    depthWrite: false,
+  });
+  const transparentMaterial = new THREE.MeshStandardMaterial({
+    flatShading: true,
+    color: props.color,
+    side: THREE.DoubleSide,
     transparent: true,
     opacity: 0.5,
+    depthWrite: false,
   });
 
-  // Assign materials to groups (each group corresponds to a pair of triangles / one cube face)
+  // Assign materials to groups.
   buffergeometry.clearGroups();
   for (let i = 0; i < 72; i += 3) {
     buffergeometry.addGroup(i, 3, i % 2);
