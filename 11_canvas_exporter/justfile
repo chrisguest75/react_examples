@@ -1,0 +1,26 @@
+set dotenv-load := true
+
+# default lists actions
+default:
+  @just -f justfile --list
+
+clean:
+  rm -rf ./node_modules || true
+
+
+nix:
+  #!/usr/bin/env bash
+  set -xeufo pipefail
+  nix develop
+
+
+install:
+  #!/usr/bin/env bash
+  set -xeufo pipefail
+  npm install
+
+
+start-dev:
+  #!/usr/bin/env bash
+  set -xeufo pipefail
+  npm run dev
