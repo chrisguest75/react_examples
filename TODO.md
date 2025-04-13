@@ -1,6 +1,5 @@
 # TODO
 
-* TailwindCSS
 * Components
 * API calls
 * Auth
@@ -8,5 +7,3 @@
 * Dockerise - no compute
 * Lambda
 * Charts
-* https://daisyui.com/
-* https://flowbite.com/
