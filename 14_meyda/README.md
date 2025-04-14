@@ -52,3 +52,5 @@ npx shadcn@latest init
 * https://github.com/meyda/meyda
 * https://meyda.js.org/guides/online-web-audio
 * https://codesandbox.io/p/sandbox/using-beatdetektor-with-meyda-forked-lvlpu?file=%2Fsrc%2Findex.js
+* https://github.com/maximux13/waveform-renderer
+* https://waveform-renderer.vercel.app/
