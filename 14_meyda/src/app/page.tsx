@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import Meyda from 'meyda';
+import { HistoryChart } from '@/ui/history-chart';
 
 export default function Home() {
   const [features, setFeatures] = useState(null);
@@ -131,6 +132,9 @@ export default function Home() {
 
 
       <audio ref={audioElementRef} controls loop crossOrigin="anonymous" id="audio" src="audio/overconfident_slope.mp3"></audio>
+      
+      <HistoryChart>  </HistoryChart>
+      
       <div className="mt-4">
         {features ? (
           <pre className="bg-gray-100 p-2 rounded">{JSON.stringify(features, null, 2)}</pre>
