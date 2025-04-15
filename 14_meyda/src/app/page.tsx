@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import Meyda from 'meyda';
-import { HistoryChart } from '@/ui/history-chart';
+import { HistoryChart } from '@/components/ui/history-chart';
 
 export default function Home() {
   const [features, setFeatures] = useState(null);
@@ -13,7 +13,7 @@ export default function Home() {
   const canvasRef = useRef(null);
   const [size, setSize] = useState({
     width: 1920,
-    height: 280,
+    height: 320,
   });
 
   const canvasWidth = size.width;
@@ -34,11 +34,8 @@ export default function Home() {
     const boxWidth = width / features?.buffer.length;
     let x_start = (boxWidth - (width % boxWidth)) / 2;
 
-    const xMargin = 6;
-    const yMargin = 6;
-
     // borders
-    let normal_colours = ["#888888"];
+    let normal_colours = ["#666666"];
 
     let y = height;
     let xCount = 0;
@@ -48,9 +45,9 @@ export default function Home() {
         ctx.fillStyle = normal_colours[0];
         ctx.beginPath();
         ctx.moveTo(x, y);
-        ctx.lineTo(x + boxWidth - xMargin, y);
-        ctx.lineTo(x + boxWidth - xMargin, y + height - yMargin);
-        ctx.lineTo(x, y + height - yMargin);
+        ctx.lineTo(x + boxWidth, y);
+        ctx.lineTo(x + boxWidth, y + height);
+        ctx.lineTo(x, y + height);
         ctx.closePath();
         ctx.fill();
         xCount++;
@@ -80,7 +77,15 @@ export default function Home() {
         audioContext: audioContextRef.current,
         source: sourceRef.current,
         bufferSize: 512,
-        featureExtractors: ['rms', 'spectralCentroid', 'zcr', 'buffer'],
+        featureExtractors: [
+          'rms', 
+          'spectralCentroid', 
+          'zcr', 
+          'buffer',
+          'energy',
+          'loudness',
+          'mfcc'           
+        ],
         callback: (features) => {
           setFeatures(features);
         },
@@ -105,7 +110,23 @@ export default function Home() {
     }
   }, [features]);
 
-  
+  const debugText = () => {
+    if (!features) return "";
+
+    const data = {
+      rms: features.rms,
+      spectralCentroid: features.spectralCentroid,
+      zcr: features.zcr,
+      energy: features.energy,
+      loudness: features.loudness,
+      mfcc: features.mfcc,
+    }
+
+    const json = JSON.stringify(data, null, 2);
+
+    return json;
+  }
+
   return (
     <div>
       <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl mb-4">
@@ -137,7 +158,7 @@ export default function Home() {
       
       <div className="mt-4">
         {features ? (
-          <pre className="bg-gray-100 p-2 rounded">{JSON.stringify(features, null, 2)}</pre>
+          <pre className="bg-gray-100 p-2 rounded">{debugText()}</pre>
         ) : (
           <p>Waiting for audio to play...</p>
         )}
