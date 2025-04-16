@@ -1,10 +1,13 @@
-# SHADCN
+# MEYDA
 
-Demonstrate setting up `shadcn`
+Demonstrate setting up `meyda` and process audio.  
 
 TODO:
 
-* Get it configured
+* Work out signals for triggering gfx.  
+* Select input from microphone or file.  
+* Override playback controls.  
+* Is it possible to add this to a webrtc page?  
 
 ## Install
 
