@@ -2,7 +2,11 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import Meyda from 'meyda';
-import { HistoryChart } from '@/components/ui/history-chart';
+import { HistoryChart, ChartValue } from '@/components/ui/history-chart';
+
+const MAX_LENGTH = 300;
+const chartDataRms: number[] = []
+const chartDataEnergy: number[] = []
 
 export default function Home() {
   const [features, setFeatures] = useState(null);
@@ -10,7 +14,9 @@ export default function Home() {
   const audioContextRef = useRef(null);
   const sourceRef = useRef(null);
   const analyzerRef = useRef(null);
-  const canvasRef = useRef(null);
+  const canvasBufferRef = useRef(null);
+  const canvasRmsRef = useRef(null);  
+  const canvasEnergyRef = useRef(null);  
   const [size, setSize] = useState({
     width: 1920,
     height: 320,
@@ -23,8 +29,7 @@ export default function Home() {
           height: `${(800 / size.width) * size.height}px`,
         }
 
-
-  const draw = (ctx: CanvasRenderingContext2D) => {
+  const drawBuffer = (ctx: CanvasRenderingContext2D) => {
     ctx.fillStyle = "#FFFFFF";
     const width = ctx.canvas.width;
     const height = ctx.canvas.height;
@@ -42,6 +47,37 @@ export default function Home() {
     let bufferIndex = 0;
     for (let x = -x_start; x < width; x += boxWidth) {
         let height = (Math.abs(features?.buffer[bufferIndex]) * -1000);
+        ctx.fillStyle = normal_colours[0];
+        ctx.beginPath();
+        ctx.moveTo(x, y);
+        ctx.lineTo(x + boxWidth, y);
+        ctx.lineTo(x + boxWidth, y + height);
+        ctx.lineTo(x, y + height);
+        ctx.closePath();
+        ctx.fill();
+        xCount++;
+        bufferIndex++;
+    }
+  };
+
+  const drawRms = (ctx: CanvasRenderingContext2D, data: number[], scale: number) => {
+    ctx.fillStyle = "#FFFFFF";
+    const width = ctx.canvas.width;
+    const height = ctx.canvas.height;
+
+    ctx.fillRect(0, 0, width, height);
+
+    const boxWidth = width / data.length;
+    let x_start = (boxWidth - (width % boxWidth)) / 2;
+
+    // borders
+    let normal_colours = ["#666666"];
+
+    let y = height;
+    let xCount = 0;
+    let bufferIndex = 0;
+    for (let x = -x_start; x < width; x += boxWidth) {
+        let height = (Math.abs(data[bufferIndex]) * scale);
         ctx.fillStyle = normal_colours[0];
         ctx.beginPath();
         ctx.moveTo(x, y);
@@ -103,15 +139,34 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    const canvas = canvasRef.current;
-    const context = canvas.getContext("2d");
+
     if (features) {
-      draw(context);
+      const canvasBuffer = canvasBufferRef.current;
+      const contextBuffer = canvasBuffer.getContext("2d");
+      drawBuffer(contextBuffer);
+
+      const canvasRms = canvasRmsRef.current;
+      const contextRms = canvasRms.getContext("2d");
+      drawRms(contextRms, chartDataRms, -1000);
+  
+      const canvasEnergy = canvasEnergyRef.current;
+      const contextEnergy = canvasEnergy.getContext("2d");
+      drawRms(contextEnergy, chartDataEnergy, -100);      
     }
+
   }, [features]);
 
   const debugText = () => {
     if (!features) return "";
+
+    chartDataRms.push(features.rms);
+    if (chartDataRms.length > MAX_LENGTH) {
+      chartDataRms.shift();
+    }
+    chartDataEnergy.push(features.energy);
+    if (chartDataEnergy.length > MAX_LENGTH) {
+      chartDataEnergy.shift();
+    }
 
     const data = {
       rms: features.rms,
@@ -127,34 +182,50 @@ export default function Home() {
     return json;
   }
 
+  //<!--<HistoryChart values={chartData}>  </HistoryChart>-->
   return (
     <div>
-      <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl mb-4">
+      <h1 className="scroll-m-10 text-4xl font-extrabold tracking-tight lg:text-5xl mb-4">
       Meyda
       </h1>
-        <div className="flex flex-grow">
-          <div className="flex flex-row flex-grow h-[30vh]">
-            <div className="w-12/12 debug-border bg-violet-700">
-              <div
-                style={{ width: "100%", height: "100%" }}
-                className="flex justify-center items-center"
-              >
-                <canvas
-                  width={canvasWidth}
-                  height={canvasHeight}
-                  style={canvarDisplaySize}
-                  className="shadow-2xl"
-                  ref={canvasRef}
-                />
-              </div>
+      <div className="flex flex-grow rounded">
+        <div className="flex flex-row flex-grow p-4">
+          <div className="w-12/12 debug-border bg-violet-700 m-4">
+
+            <div className="flex justify-center items-center m-4">
+              <canvas
+                width={canvasWidth}
+                height={canvasHeight}
+                style={canvarDisplaySize}
+                className="shadow-2xl"
+                ref={canvasBufferRef}
+              />
             </div>
+            <div className="flex justify-center items-center m-4">
+              <canvas
+                width={canvasWidth}
+                height={canvasHeight}
+                style={canvarDisplaySize}
+                className="shadow-2xl"
+                ref={canvasRmsRef}
+              />              
+            </div>
+            <div className="flex justify-center items-center m-4">
+              <canvas
+                width={canvasWidth}
+                height={canvasHeight}
+                style={canvarDisplaySize}
+                className="shadow-2xl"
+                ref={canvasEnergyRef}
+              />              
+            </div>            
+            <div className="flex justify-center items-center m-4">
+              <audio ref={audioElementRef} controls loop crossOrigin="anonymous" id="audio" src="audio/overconfident_slope.mp3"></audio>
+            </div>            
           </div>
         </div>
+      </div>
 
-
-      <audio ref={audioElementRef} controls loop crossOrigin="anonymous" id="audio" src="audio/overconfident_slope.mp3"></audio>
-      
-      <HistoryChart>  </HistoryChart>
       
       <div className="mt-4">
         {features ? (
