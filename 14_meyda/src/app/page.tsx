@@ -168,7 +168,18 @@ export default function Home() {
       chartDataEnergy.shift();
     }
 
+    const timeStamp = audioElementRef.current.currentTime;
+    const timeCode = document.getElementById("timeCode");
+    if (timeCode) {
+      const minutes = Math.floor(timeStamp / 60);
+      const seconds = Math.floor(timeStamp % 60);
+      const milliseconds = Math.floor((timeStamp % 1) * 1000);
+      timeCode.innerText = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}:${String(milliseconds).padStart(3, '0')}`;
+    }
+
+
     const data = {
+      time: timeStamp,
       rms: features.rms,
       spectralCentroid: features.spectralCentroid,
       zcr: features.zcr,
@@ -185,19 +196,24 @@ export default function Home() {
   //<!--<HistoryChart values={chartData}>  </HistoryChart>-->
   return (
     <div>
-      <h1 className="scroll-m-10 text-4xl font-extrabold tracking-tight lg:text-5xl mb-4">
+      <h1 className="text-4xl font-extrabold lg:text-5xl mb-4">
       Meyda
       </h1>
       <div className="flex flex-grow rounded">
         <div className="flex flex-row flex-grow p-4">
-          <div className="w-12/12 debug-border bg-violet-700 m-4">
+          <div className="w-12/12 debug-border bg-violet-700 m-4 rounded-lg shadow-2xl">
+          <div className="flex justify-center items-center m-4">
+          <h2 id="timeCode" className="text-4xl font-extrabold tracking-tight lg:text-5xl mb-4 text-stone-300">
+          00:00:00
+          </h2>
+          </div>
 
             <div className="flex justify-center items-center m-4">
               <canvas
                 width={canvasWidth}
                 height={canvasHeight}
                 style={canvarDisplaySize}
-                className="shadow-2xl"
+                className="shadow-2xl rounded-lg"
                 ref={canvasBufferRef}
               />
             </div>
@@ -206,7 +222,7 @@ export default function Home() {
                 width={canvasWidth}
                 height={canvasHeight}
                 style={canvarDisplaySize}
-                className="shadow-2xl"
+                className="shadow-2xl rounded-lg"
                 ref={canvasRmsRef}
               />              
             </div>
@@ -215,7 +231,7 @@ export default function Home() {
                 width={canvasWidth}
                 height={canvasHeight}
                 style={canvarDisplaySize}
-                className="shadow-2xl"
+                className="shadow-2xl rounded-lg"
                 ref={canvasEnergyRef}
               />              
             </div>            
@@ -223,17 +239,15 @@ export default function Home() {
               <audio ref={audioElementRef} controls loop crossOrigin="anonymous" id="audio" src="audio/overconfident_slope.mp3"></audio>
             </div>            
           </div>
-        </div>
+        </div>       
       </div>
-
-      
-      <div className="mt-4">
+      <div className="m-4">
         {features ? (
           <pre className="bg-gray-100 p-2 rounded">{debugText()}</pre>
         ) : (
           <p>Waiting for audio to play...</p>
         )}
-      </div>
+      </div>       
     </div>
   );
 }
