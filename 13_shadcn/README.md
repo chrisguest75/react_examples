@@ -42,9 +42,14 @@ npm run lint
 npx create-next-app --typescript 13_shadcn
 npx shadcn@latest init
 
-
+# adding navigation and icons
+npx shadcn@latest add navigation-menu
+npm i @radix-ui/react-icons
 ```
 
 ## Resources
 
 * https://ui.shadcn.com/docs/installation/next
+* https://lucide.dev/icons/
+* https://www.radix-ui.com/icons
+* https://tailwindcss.com/blog/tailwindcss-v4
