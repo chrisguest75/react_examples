@@ -16,6 +16,10 @@ code --install-extension skyran.js-jsx-snippets
 open https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en
 ```
 
+## CodePen
+
+My Basic React Example on CodePen [here](https://codepen.io/guestchris/pen/bGvXjmX)  
+
 ## Troubleshooting
 
 If the `create-react-app` is failing you might need to clear the cache.  
