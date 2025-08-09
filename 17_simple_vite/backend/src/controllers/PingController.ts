@@ -4,7 +4,7 @@ interface PingResponse {
     message: string
 }
 
-@Route('ping')
+@Route('api/ping')
 export class PingController {
     @Get('/')
     public async getMessage(): Promise<PingResponse> {
