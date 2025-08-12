@@ -13,3 +13,5 @@ Goto the [frontend](./frontend/README.md) directory for more information.
 Goto the [backend](./backend/README.md) directory for more information.
 
 ## Resources
+
+* https://firebase.google.com/docs/remote-config
