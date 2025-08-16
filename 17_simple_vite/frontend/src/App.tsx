@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import Card from './Card'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
@@ -71,20 +72,12 @@ function App() {
         </a>
       </div>
       <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={incrementCount} disabled={loading}>
-          {loading ? 'Loading...' : `count is ${count}`}
-        </button>
-        <button onClick={resetCount} disabled={loading} style={{ marginLeft: '10px' }}>
-          Reset
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-        <p>
-          The count is now persisted on the server!
-        </p>
-      </div>
+      <Card
+        count={count}
+        loading={loading}
+        onIncrement={incrementCount}
+        onReset={resetCount}
+      />
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>

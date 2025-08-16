@@ -2,6 +2,13 @@
 
 A simple Vite project.
 
+NOTES:
+
+* @testing-library/react = tools for rendering and interacting with React components
+* @testing-library/jest-dom = extra assertions for checking DOM state in tests
+* The vitest.setup.ts file is used to configure global setup for Vitest tests. It runs before any test files and is typically used to import libraries
+* vitest.config.ts = configures how Vitest runs.
+
 ## Create
 
 To recreate the project, you can use the following commands:
