@@ -1,10 +1,18 @@
 
+import { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Home from './Home';
 import About from './About';
 import Contact from './Contact';
+import Login from './Login';
 
 function App() {
+  const [loggedIn, setLoggedIn] = useState(false);
+
+  if (!loggedIn) {
+    return <Login onLogin={() => setLoggedIn(true)} />;
+  }
+
   return (
     <Router>
       <div className="flex h-screen bg-background text-foreground">
