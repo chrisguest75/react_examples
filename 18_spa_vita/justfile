@@ -5,8 +5,8 @@
 set dotenv-load := true
 
 # default lists actions
-default:
-  @just -f {{ source_file() }} --list
+#default:
+#  @just -f {{ source_file() }} --list
 
 clean:
   #!/usr/bin/env bash

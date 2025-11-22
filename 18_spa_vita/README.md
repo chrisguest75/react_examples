@@ -12,6 +12,11 @@ TODO:
 npm run dev
 ```
 
+## Login
+
+User:admin  
+Pwd:password123  
+
 ## Resources
 
 * https://ui.shadcn.com/docs/installation/vite
